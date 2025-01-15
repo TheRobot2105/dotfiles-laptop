@@ -91,12 +91,6 @@
     isNormalUser = true;
     description = "Felix Kimmel";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      kdePackages.kate
-      thunderbird
-      texstudio
-      discord-ptb
-    ];
   };
   # Install firefox.
   programs.firefox.enable = true;
