@@ -100,6 +100,7 @@
         };
       };
       "security.workspace.trust.untrustedFiles" = "open";
+      "git.enableSmartCommit"= true;
     };
   };
   programs.git = {
