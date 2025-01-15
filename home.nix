@@ -7,7 +7,12 @@
   # manage.
   home.username = "felix";
   home.homeDirectory = "/home/felix";
-
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -72,11 +77,36 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+  programs.vscode = {
+    enable = true;
+    userSettings = {
+      "nix.serverPath" = "nixd";
+      "nix.enableLanguageServer" = true;
+      "nix.serverSettings" = {
+        "nixd" = {
+          "formatting" = {
+            "command" = [
+              "alejandra"
+            ];
+          };
+          "options" = {
+            "nixos" = {
+              "expr" = "(builtins.getFlake \"/home/felix/.dotfiles/\").nixosConfigurations.nixos-laptop.options";
+            };
+            "home_manager" = {
+              "expr" = "(builtins.getFlake \"/home/felix/.dotfiles/\").homeConfigurations.felix.options";
+            };
+          };
+        };
+      };
+      "security.workspace.trust.untrustedFiles" = "open";
+    };
+  };
   programs.git = {
     enable = true;
     userEmail = "felix.kimmel@web.de";
     userName = "Felix Kimmel";
-    extraConfig = { 
+    extraConfig = {
       init.defaultBranch = "main";
     };
   };
