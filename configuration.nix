@@ -113,7 +113,6 @@
     filezilla
     python312
     python312Packages.pygments
-    python312Packages.dbus-python
     btop-rocm
   ];
   # Some programs need SUID wrappers, can be configured further or are
