@@ -16,7 +16,6 @@
     self,
     nixpkgs,
     home-manager,
-    plasma-manager,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
