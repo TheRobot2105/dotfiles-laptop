@@ -107,6 +107,16 @@
       "git.confirmSync" = false;
       "latex-workshop.latex.recipes" = [
         {
+          name = "THM-Recipe";
+          tools = [
+            "xelatex"
+            "biber"
+            "makeglossaries"
+            "xelatex"
+            "xelatex"
+          ];
+        }
+        {
           name = "latexmk";
           tools = [
             "latexmk"
@@ -204,6 +214,34 @@
             "-xelatex"
             "-outdir=%OUTDIR%"
             "%DOC%"
+          ];
+          env = {};
+        }
+        {
+          name = "xelatex";
+          command = "xelatex";
+          args = [
+            "-synctex=1"
+            "-interaction=nonstopmode"
+            "-file-line-error"
+            "-shell-escape"
+            "%DOC%"
+          ];
+          env = {};
+        }
+        {
+          name = "biber";
+          command = "biber";
+          args = [
+            "%DOCFILE%"
+          ];
+          env = {};
+        }
+        {
+          name = "makeglossaries";
+          command = "makeglossaries";
+          args = [
+            "%DOCFILE%"
           ];
           env = {};
         }
