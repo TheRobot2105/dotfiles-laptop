@@ -10,31 +10,40 @@
 
     # or any branch you want:
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    plasma-manager,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
-    system ="x86_64-linux";
+    system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
       nixos-laptop = lib.nixosSystem {
         specialArgs = {inherit inputs;};
-        inherit system ;
+        inherit system;
         modules = [./configuration.nix];
       };
     };
-      homeConfigurations = {
-        felix = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = {inherit inputs;};
-          inherit pkgs;
-          modules = [ ./home.nix ];
-        };
+    homeConfigurations = {
+      felix = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = {inherit inputs;};
+        inherit pkgs;
+        modules = [
+          inputs.plasma-manager.homeManagerModules.plasma-manager
+          ./home.nix
+        ];
       };
     };
+  };
 }
