@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-programs.vscode = {
+  programs.vscode = {
     enable = true;
     userSettings = {
       "nix.serverPath" = "nixd";
@@ -29,8 +29,8 @@ programs.vscode = {
       "security.workspace.trust.untrustedFiles" = "open";
       "git.enableSmartCommit" = true;
       "git.confirmSync" = false;
-      "ungit.showInActiveColumn"= true;
-      "ungit.showButton"=true;
+      "ungit.showInActiveColumn" = true;
+      "ungit.showButton" = true;
       "latex-workshop.latex.recipes" = [
         {
           name = "THM-Recipe";
