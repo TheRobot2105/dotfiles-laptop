@@ -3,8 +3,8 @@
   pkgs,
   ...
 }: {
-  inputs = [
-    ./user-congig/vscode.nix
+  imports = [
+    ./user-config/vscode.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
