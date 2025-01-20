@@ -29,6 +29,8 @@ programs.vscode = {
       "security.workspace.trust.untrustedFiles" = "open";
       "git.enableSmartCommit" = true;
       "git.confirmSync" = false;
+      "ungit.showInActiveColumn"= true;
+      "ungit.showButton"=true;
       "latex-workshop.latex.recipes" = [
         {
           name = "THM-Recipe";
