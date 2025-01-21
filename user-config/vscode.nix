@@ -29,9 +29,13 @@
       "security.workspace.trust.untrustedFiles" = "open";
       "git.enableSmartCommit" = true;
       "git.confirmSync" = false;
+
       "ungit.showInActiveColumn" = true;
       "ungit.showButton" = true;
-      "latex-workshop.formatting.latex"= "latexindent";
+
+      "cSpell.language" = "en,de-DE";
+
+      "latex-workshop.formatting.latex" = "latexindent";
       "latex-workshop.latex.recipes" = [
         {
           name = "THM-Recipe";
