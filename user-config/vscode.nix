@@ -33,7 +33,8 @@
       "ungit.showInActiveColumn" = true;
       "ungit.showButton" = true;
 
-      "cSpell.language" = "en,de-DE";
+      "ltex.language"= "de-DE";
+      "ltex.ltex-ls.path"= "${pkgs.ltex-ls-plus}";
 
       "latex-workshop.formatting.latex" = "latexindent";
       "latex-workshop.latex.recipes" = [
