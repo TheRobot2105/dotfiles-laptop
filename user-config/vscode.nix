@@ -31,6 +31,7 @@
       "git.confirmSync" = false;
       "ungit.showInActiveColumn" = true;
       "ungit.showButton" = true;
+      "latex-workshop.formatting.latex"= "latexindent";
       "latex-workshop.latex.recipes" = [
         {
           name = "THM-Recipe";
