@@ -4,6 +4,11 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    vscode-extensions.jnoortheen.nix-ide
+    vscode-extensions.ltex-plus.vscode-ltex-plus
+    vscode-extensions.james-yu.latex-workshop
+  ];
   programs.vscode = {
     enable = true;
     userSettings = {
