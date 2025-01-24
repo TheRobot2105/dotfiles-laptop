@@ -39,6 +39,8 @@
       "ungit.showInActiveColumn" = true;
       "ungit.showButton" = true;
 
+      "extensions.autoUpdate"= false;
+
       "ltex.language"= "de-DE";
       "ltex.ltex-ls.path"= "${pkgs.ltex-ls-plus}";
 
