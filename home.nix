@@ -97,9 +97,6 @@
       init.defaultBranch = "main";
     };
   };
-  programs.kitty = {
-    enable = true;
-  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
