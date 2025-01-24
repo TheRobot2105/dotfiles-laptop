@@ -41,6 +41,7 @@
     prusa-slicer
     ltex-ls-plus
     qalculate-qt
+    gcr
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -89,14 +90,21 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  
+
   programs.git = {
     enable = true;
     userEmail = "felix.kimmel@web.de";
     userName = "Felix Kimmel";
     extraConfig = {
       init.defaultBranch = "main";
+      commit.gpgsign = true;
     };
+  };
+
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
