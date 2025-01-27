@@ -43,6 +43,7 @@
     qalculate-qt
     gcr
     spotify
+    github-desktop
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -98,7 +99,7 @@
     userName = "Felix Kimmel";
     extraConfig = {
       init.defaultBranch = "main";
-      commit.gpgsign = true;
+      commit.gpgsign = false;
     };
   };
 
