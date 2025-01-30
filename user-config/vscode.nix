@@ -10,6 +10,7 @@
         jnoortheen.nix-ide
         ltex-plus.vscode-ltex-plus
         james-yu.latex-workshop
+        hirse.vscode-ungit
 
     ];
     userSettings = {
