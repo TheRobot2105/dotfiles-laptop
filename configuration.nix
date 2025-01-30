@@ -115,6 +115,7 @@
     python312
     python312Packages.pygments
     btop-rocm
+    xdg-desktop-portal-kde
   ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
