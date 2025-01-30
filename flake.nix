@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # use the following for unstable:
     nixpkgs.url = "nixpkgs/nixos-unstable";
-
+    #hyprland.url = "github:hyprwm/Hyprland";
     # or any branch you want:
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
   };
