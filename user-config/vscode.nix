@@ -6,12 +6,11 @@
 }: {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions;[
-        jnoortheen.nix-ide
-        ltex-plus.vscode-ltex-plus
-        james-yu.latex-workshop
-        hirse.vscode-ungit
-
+    extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
+      ltex-plus.vscode-ltex-plus
+      james-yu.latex-workshop
+      hirse.vscode-ungit
     ];
     userSettings = {
       "nix.serverPath" = "nixd";
@@ -40,10 +39,10 @@
       "ungit.showInActiveColumn" = true;
       "ungit.showButton" = true;
 
-      "extensions.autoUpdate"= false;
+      "extensions.autoUpdate" = false;
 
-      "ltex.language"= "de-DE";
-      "ltex.ltex-ls.path"= "${pkgs.ltex-ls-plus}";
+      "ltex.language" = "de-DE";
+      "ltex.ltex-ls.path" = "${pkgs.ltex-ls-plus}";
 
       "latex-workshop.formatting.latex" = "latexindent";
       "latex-workshop.latex.recipes" = [
