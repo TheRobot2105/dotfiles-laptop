@@ -43,7 +43,7 @@
     qalculate-qt
     gcr
     spotify
-    github-desktop
+    #github-desktop
     element-desktop
     zoom-us
     # # It is sometimes useful to fine-tune packages, for example, by applying
