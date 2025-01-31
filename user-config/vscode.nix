@@ -11,6 +11,7 @@
       ltex-plus.vscode-ltex-plus
       james-yu.latex-workshop
       hirse.vscode-ungit
+      github.vscode-github-actions
     ];
     userSettings = {
       "nix.serverPath" = "nixd";
