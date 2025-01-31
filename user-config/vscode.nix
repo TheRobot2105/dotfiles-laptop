@@ -12,39 +12,12 @@
       james-yu.latex-workshop
       hirse.vscode-ungit
       github.vscode-github-actions
+      hiukky.flate
     ];
     userSettings = {
-      "nix.serverPath" = "nixd";
-      "nix.enableLanguageServer" = true;
-      "nix.serverSettings" = {
-        "nixd" = {
-          "formatting" = {
-            "command" = [
-              "alejandra"
-            ];
-          };
-          "options" = {
-            "nixos" = {
-              "expr" = "(builtins.getFlake \"/home/felix/.dotfiles/\").nixosConfigurations.nixos-laptop.options";
-            };
-            "home_manager" = {
-              "expr" = "(builtins.getFlake \"/home/felix/.dotfiles/\").homeConfigurations.felix.options";
-            };
-          };
-        };
-      };
-      "security.workspace.trust.untrustedFiles" = "open";
-      "git.enableSmartCommit" = true;
-      "git.confirmSync" = false;
-
-      "ungit.showInActiveColumn" = true;
-      "ungit.showButton" = true;
-
       "extensions.autoUpdate" = false;
-
-      "ltex.language" = "de-DE";
-      "ltex.ltex-ls.path" = "${pkgs.ltex-ls-plus}";
-
+      "git.confirmSync" = false;
+      "git.enableSmartCommit" = true;
       "latex-workshop.formatting.latex" = "latexindent";
       "latex-workshop.latex.recipes" = [
         {
@@ -120,8 +93,6 @@
       ];
       "latex-workshop.latex.tools" = [
         {
-          name = "latexmk";
-          command = "latexmk";
           args = [
             "-synctex=1"
             "-interaction=nonstopmode"
@@ -130,11 +101,11 @@
             "-outdir=%OUTDIR%"
             "%DOC%"
           ];
+          command = "latexmk";
           env = {};
+          name = "latexmk";
         }
         {
-          name = "lualatexmk";
-          command = "latexmk";
           args = [
             "-synctex=1"
             "-interaction=nonstopmode"
@@ -143,11 +114,11 @@
             "-outdir=%OUTDIR%"
             "%DOC%"
           ];
+          command = "latexmk";
           env = {};
+          name = "lualatexmk";
         }
         {
-          name = "xelatexmk";
-          command = "latexmk";
           args = [
             "-synctex=1"
             "-interaction=nonstopmode"
@@ -156,11 +127,11 @@
             "-outdir=%OUTDIR%"
             "%DOC%"
           ];
+          command = "latexmk";
           env = {};
+          name = "xelatexmk";
         }
         {
-          name = "xelatex";
-          command = "xelatex";
           args = [
             "-synctex=1"
             "-interaction=nonstopmode"
@@ -168,110 +139,137 @@
             "-shell-escape"
             "%DOC%"
           ];
+          command = "xelatex";
           env = {};
+          name = "xelatex";
         }
         {
-          name = "biber";
+          args = [
+            "%DOCFILE%"
+          ];
           command = "biber";
+          env = {};
+          name = "biber";
+        }
+        {
           args = [
             "%DOCFILE%"
           ];
-          env = {};
-        }
-        {
-          name = "makeglossaries";
           command = "makeglossaries";
-          args = [
-            "%DOCFILE%"
-          ];
           env = {};
+          name = "makeglossaries";
         }
         {
-          name = "latexmk_rconly";
-          command = "latexmk";
           args = [
             "%DOC%"
           ];
+          command = "latexmk";
           env = {};
+          name = "latexmk_rconly";
         }
         {
-          name = "pdflatex";
-          command = "pdflatex";
           args = [
             "-synctex=1"
             "-interaction=nonstopmode"
             "-file-line-error"
             "%DOC%"
           ];
+          command = "pdflatex";
           env = {};
+          name = "pdflatex";
         }
         {
-          name = "bibtex";
-          command = "bibtex";
           args = [
             "%DOCFILE%"
           ];
+          command = "bibtex";
           env = {};
+          name = "bibtex";
         }
         {
-          name = "rnw2tex";
-          command = "Rscript";
           args = [
             "-e"
             "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
           ];
+          command = "Rscript";
           env = {};
+          name = "rnw2tex";
         }
         {
-          name = "jnw2tex";
-          command = "julia";
           args = [
             "-e"
             "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
           ];
+          command = "julia";
           env = {};
+          name = "jnw2tex";
         }
         {
-          name = "jnw2texminted";
-          command = "julia";
           args = [
             "-e"
             "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
           ];
+          command = "julia";
           env = {};
+          name = "jnw2texminted";
         }
         {
-          name = "pnw2tex";
-          command = "pweave";
           args = [
             "-f"
             "tex"
             "%DOC_EXT%"
           ];
+          command = "pweave";
           env = {};
+          name = "pnw2tex";
         }
         {
-          name = "pnw2texminted";
-          command = "pweave";
           args = [
             "-f"
             "texminted"
             "%DOC_EXT%"
           ];
+          command = "pweave";
           env = {};
+          name = "pnw2texminted";
         }
         {
-          name = "tectonic";
-          command = "tectonic";
           args = [
             "--synctex"
             "--keep-logs"
             "--print"
             "%DOC%.tex"
           ];
+          command = "tectonic";
           env = {};
+          name = "tectonic";
         }
       ];
+      "ltex.language" = "de-DE";
+      "ltex.ltex-ls.path" = "/nix/store/5c69nrr37i9v181j4z0zjzmlr36l9z45-ltex-ls-plus-18.4.0";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nixd";
+      "nix.serverSettings" = {
+        nixd = {
+          formatting = {
+            command = [
+              "alejandra"
+            ];
+          };
+          options = {
+            home_manager = {
+              expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").homeConfigurations.felix.options";
+            };
+            nixos = {
+              expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").nixosConfigurations.nixos-laptop.options";
+            };
+          };
+        };
+      };
+      "security.workspace.trust.untrustedFiles" = "open";
+      "ungit.showButton" = true;
+      "ungit.showInActiveColumn" = true;
+      "workbench.colorTheme" = "Flate";
     };
   };
 }
