@@ -269,7 +269,7 @@
       "security.workspace.trust.untrustedFiles" = "open";
       "ungit.showButton" = true;
       "ungit.showInActiveColumn" = true;
-      "workbench.colorTheme" = "Flate";
+      "workbench.colorTheme" = "Flate Bold";
     };
   };
 }
