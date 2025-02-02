@@ -13,6 +13,8 @@
       hirse.vscode-ungit
       github.vscode-github-actions
       hiukky.flate
+      #platformio.platformio-vscode-ide
+      #ms-vscode.cpptools
     ];
     userSettings = {
       "extensions.autoUpdate" = false;
