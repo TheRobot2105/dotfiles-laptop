@@ -8,6 +8,11 @@
     # use the following for unstable:
     nixpkgs.url = "nixpkgs/nixos-unstable";
     #hyprland.url = "github:hyprwm/Hyprland";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     # or any branch you want:
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
   };
@@ -16,6 +21,7 @@
     self,
     nixpkgs,
     home-manager,
+    plasma-manager,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
@@ -34,6 +40,7 @@
         extraSpecialArgs = {inherit inputs;};
         inherit pkgs;
         modules = [
+          inputs.plasma-manager.homeManagerModules.plasma-manager
           ./home.nix
         ];
       };
