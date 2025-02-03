@@ -25,5 +25,16 @@
         }
       ];
     };
+    kscreenlocker = {
+      wallpaperSlideShow = {
+        path = ["/home/felix/.dotfiles/wallpaper/"];
+        interval = 600;
+      };
+      lockOnResume = false;
+      passwordRequired = true;
+      autoLock = true;
+      timeout = 10;
+      passwordRequiredDelay = 5;
+    };
   };
 }
