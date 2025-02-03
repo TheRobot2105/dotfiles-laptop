@@ -25,10 +25,17 @@
         }
       ];
     };
+    session = {
+      general.askForConfirmationOnLogout = false;
+    };
     kscreenlocker = {
-      wallpaperSlideShow = {
-        path = ["/home/felix/.dotfiles/wallpaper/"];
-        interval = 600;
+      appearance = {
+        wallpaperSlideShow = {
+          path = ["/home/felix/.dotfiles/wallpaper/"];
+          interval = 600;
+        };
+        alwaysShowClock = true;
+        showMediaControls = false;
       };
       lockOnResume = false;
       passwordRequired = true;
