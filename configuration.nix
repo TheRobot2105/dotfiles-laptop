@@ -116,6 +116,9 @@
     python312Packages.pygments
     btop-rocm
     xdg-desktop-portal-kde
+    kdePackages.partitionmanager
+    exfat
+    exfatprogs
   ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
