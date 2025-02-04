@@ -37,7 +37,7 @@
     thunderbird
     texstudio
     discord-ptb
-    kicad
+    #kicad
     nextcloud-client
     prusa-slicer
     ltex-ls-plus
