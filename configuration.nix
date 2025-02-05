@@ -111,6 +111,7 @@
     nixd
     texliveFull
     git
+    git-crypt
     filezilla
     python312
     python312Packages.pygments
