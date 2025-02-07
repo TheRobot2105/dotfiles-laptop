@@ -131,9 +131,6 @@
   services.power-profiles-daemon.enable = true;
   # List services that you want to enable:
 
- 
-  users.users.felix.shell = pkgs.fish;
-  users.users.felix.ignoreShellProgramCheck = true;
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 

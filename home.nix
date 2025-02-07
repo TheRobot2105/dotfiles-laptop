@@ -48,7 +48,6 @@
     element-desktop
     zoom-us
     libreoffice
-    
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -118,10 +117,16 @@
   #wayland.windowManager.hyprland = {
   #  enable = true;
   #};
- programs.fish = {
+  programs.fish = {
     enable = true;
     generateCompletions = true;
-    
+  };
+  programs.konsole = {
+    enable = true;
+    defaultProfile = "fish";
+    profiles.fish = {
+      command = "${pkgs.fish}/bin/fish";
+    };
   };
   programs.home-manager.enable = true;
 }
