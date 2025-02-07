@@ -118,6 +118,10 @@
   #wayland.windowManager.hyprland = {
   #  enable = true;
   #};
-
+ programs.fish = {
+    enable = true;
+    generateCompletions = true;
+    
+  };
   programs.home-manager.enable = true;
 }
