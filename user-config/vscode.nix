@@ -126,6 +126,7 @@
             "-interaction=nonstopmode"
             "-file-line-error"
             "-xelatex"
+            "-shell-escape"
             "-outdir=%OUTDIR%"
             "%DOC%"
           ];
@@ -273,6 +274,7 @@
       "ungit.showButton" = true;
       "ungit.showInActiveColumn" = true;
       "workbench.colorTheme" = "Flate Bold";
+      "latex-workshop.latex.autoBuild.run"= "never";
     };
   };
 }
