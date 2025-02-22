@@ -13,6 +13,7 @@
       hirse.vscode-ungit
       github.vscode-github-actions
       hiukky.flate
+      github.codespaces
       #platformio.platformio-vscode-ide
       #ms-vscode.cpptools
     ];
