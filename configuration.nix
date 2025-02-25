@@ -116,7 +116,6 @@
     python312
     python312Packages.pygments
     btop-rocm
-    xdg-desktop-portal-kde
     kdePackages.partitionmanager
     exfat
     exfatprogs
