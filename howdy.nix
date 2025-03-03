@@ -8,7 +8,7 @@
   ninja,
   meson,
   inih,
-  
+  pkg-config,
 }:
 stdenv.mkDerivation {
   pname = "howdy";
@@ -31,6 +31,7 @@ postPatch = ''
     #python312Packages.wheel
     ninja
     meson
+    pkg-config
     inih
   ];
 
