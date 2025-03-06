@@ -277,6 +277,9 @@
         "ungit.showInActiveColumn" = true;
         "workbench.colorTheme" = "Flate Bold";
         "latex-workshop.latex.autoBuild.run" = "never";
+        "terminal.integrated.defaultProfile.linux"= "fish";
+        "editor.fontFamily"= "Fira Code";
+        "editor.fontLigatures"= true;
       };
     };
   };
