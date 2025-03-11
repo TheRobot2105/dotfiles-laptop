@@ -15,6 +15,8 @@
         github.vscode-github-actions
         hiukky.flate
         github.codespaces
+        johnpapa.winteriscoming
+        catppuccin.catppuccin-vsc-icons
         #platformio.platformio-vscode-ide
         #ms-vscode.cpptools
       ];
@@ -275,7 +277,8 @@
         "security.workspace.trust.untrustedFiles" = "open";
         "ungit.showButton" = true;
         "ungit.showInActiveColumn" = true;
-        "workbench.colorTheme" = "Flate Bold";
+        "workbench.colorTheme" = "Winter is Coming (Dark Blue)";
+        "workbench.iconTheme"= "catppuccin-mocha";
         "latex-workshop.latex.autoBuild.run" = "never";
         "terminal.integrated.defaultProfile.linux"= "fish";
         "editor.fontFamily"= "Fira Code";
