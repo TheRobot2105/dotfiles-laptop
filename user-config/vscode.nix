@@ -16,7 +16,8 @@
         hiukky.flate
         github.codespaces
         johnpapa.winteriscoming
-        catppuccin.catppuccin-vsc-icons
+        #catppuccin.catppuccin-vsc-icons
+        pkief.material-icon-theme
         #platformio.platformio-vscode-ide
         #ms-vscode.cpptools
       ];
@@ -278,7 +279,7 @@
         "ungit.showButton" = true;
         "ungit.showInActiveColumn" = true;
         "workbench.colorTheme" = "Winter is Coming (Dark Blue)";
-        "workbench.iconTheme"= "catppuccin-mocha";
+        "workbench.iconTheme"= "material-icon-theme";
         "latex-workshop.latex.autoBuild.run" = "never";
         "terminal.integrated.defaultProfile.linux"= "fish";
         "editor.fontFamily"= "Fira Code";
