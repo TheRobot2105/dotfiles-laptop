@@ -120,9 +120,9 @@
     exfat
     exfatprogs
   ];
-  fonts.packages = with pkgs; [ 
+  fonts.packages = with pkgs; [
     fira-code
-    ];
+  ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -134,7 +134,13 @@
 
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["felix"];
-  virtualisation.libvirtd.enable = true;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.ovmf.enable = true;
+      qemu.swtpm.enable = true;
+    };
+  };
   virtualisation.spiceUSBRedirection.enable = true;
   # List services that you want to enable:
 
