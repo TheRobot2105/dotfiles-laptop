@@ -115,7 +115,7 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
   };
-  # Let Home Manager install and manage itself.
+  
   #wayland.windowManager.hyprland = {
   #  enable = true;
   #};
@@ -131,5 +131,6 @@
       command = "${pkgs.fish}/bin/fish";
     };
   };
+  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
