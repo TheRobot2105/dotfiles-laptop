@@ -97,7 +97,7 @@
   #  /etc/profiles/per-user/felix/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nano";
   };
 
   programs.git = {
