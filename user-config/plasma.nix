@@ -40,7 +40,7 @@
       lockOnResume = false;
       passwordRequired = true;
       autoLock = true;
-      timeout = 10;
+      timeout = 20;
       passwordRequiredDelay = 5;
     };
   };
