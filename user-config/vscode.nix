@@ -252,7 +252,6 @@
           }
         ];
         "ltex.language" = "de-DE";
-        #"ltex.ltex-ls.path" = "/nix/store/5c69nrr37i9v181j4z0zjzmlr36l9z45-ltex-ls-plus-18.4.0";
         "ltex.ltex-ls.path" = "${pkgs.ltex-ls-plus}";
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
