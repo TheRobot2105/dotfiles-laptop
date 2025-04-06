@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./user-config/vscode.nix
     ./user-config/hyprland.nix
@@ -107,7 +104,6 @@
     extraConfig = {
       init.defaultBranch = "main";
       commit.gpgsign = false;
-      credential.helper = "cache";
     };
   };
 
@@ -116,7 +112,7 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
   };
-  
+
   #wayland.windowManager.hyprland = {
   #  enable = true;
   #};
