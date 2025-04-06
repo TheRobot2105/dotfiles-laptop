@@ -107,6 +107,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       commit.gpgsign = false;
+      credential.helper = "cache";
     };
   };
 
