@@ -133,8 +133,7 @@
           sha256 = "sha256-cFroQ7PSBZ5BhXzZEKTKHnEAuEu8W9rFrGZAb8vTgIE=";
         };
       }
-    ]
-    ;
+    ];
   };
   programs.konsole = {
     enable = true;
@@ -145,4 +144,10 @@
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  services.home-manager.autoExpire = {
+    enable = true;
+    frequency = "weekly";
+    store.cleanup = true;
+    store.options = "-d";
+  };
 }
