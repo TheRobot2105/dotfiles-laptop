@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./user-config/vscode.nix
     ./user-config/hyprland.nix

@@ -5,7 +5,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -17,7 +18,7 @@
 
   zramSwap.enable = true;
 
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   networking.hostName = "nixos-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -54,7 +55,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "de";
@@ -91,7 +92,10 @@
   users.users.felix = {
     isNormalUser = true;
     description = "Felix Kimmel";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
   # Install firefox.
   programs.firefox.enable = true;
@@ -136,7 +140,7 @@
   services.power-profiles-daemon.enable = true;
 
   programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = ["felix"];
+  users.groups.libvirtd.members = [ "felix" ];
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -164,7 +168,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   #programs.hyprland.enable = true;
   #programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 }

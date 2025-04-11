@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   programs.vscode = {
     enable = true;
     profiles.default = {
@@ -107,7 +108,7 @@
               "%DOC%"
             ];
             command = "latexmk";
-            env = {};
+            env = { };
             name = "latexmk";
           }
           {
@@ -120,7 +121,7 @@
               "%DOC%"
             ];
             command = "latexmk";
-            env = {};
+            env = { };
             name = "lualatexmk";
           }
           {
@@ -134,7 +135,7 @@
               "%DOC%"
             ];
             command = "latexmk";
-            env = {};
+            env = { };
             name = "xelatexmk";
           }
           {
@@ -146,7 +147,7 @@
               "%DOC%"
             ];
             command = "xelatex";
-            env = {};
+            env = { };
             name = "xelatex";
           }
           {
@@ -154,7 +155,7 @@
               "%DOCFILE%"
             ];
             command = "biber";
-            env = {};
+            env = { };
             name = "biber";
           }
           {
@@ -162,7 +163,7 @@
               "%DOCFILE%"
             ];
             command = "makeglossaries";
-            env = {};
+            env = { };
             name = "makeglossaries";
           }
           {
@@ -170,7 +171,7 @@
               "%DOC%"
             ];
             command = "latexmk";
-            env = {};
+            env = { };
             name = "latexmk_rconly";
           }
           {
@@ -181,7 +182,7 @@
               "%DOC%"
             ];
             command = "pdflatex";
-            env = {};
+            env = { };
             name = "pdflatex";
           }
           {
@@ -189,7 +190,7 @@
               "%DOCFILE%"
             ];
             command = "bibtex";
-            env = {};
+            env = { };
             name = "bibtex";
           }
           {
@@ -198,7 +199,7 @@
               "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
             ];
             command = "Rscript";
-            env = {};
+            env = { };
             name = "rnw2tex";
           }
           {
@@ -207,7 +208,7 @@
               "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
             ];
             command = "julia";
-            env = {};
+            env = { };
             name = "jnw2tex";
           }
           {
@@ -216,7 +217,7 @@
               "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
             ];
             command = "julia";
-            env = {};
+            env = { };
             name = "jnw2texminted";
           }
           {
@@ -226,7 +227,7 @@
               "%DOC_EXT%"
             ];
             command = "pweave";
-            env = {};
+            env = { };
             name = "pnw2tex";
           }
           {
@@ -236,7 +237,7 @@
               "%DOC_EXT%"
             ];
             command = "pweave";
-            env = {};
+            env = { };
             name = "pnw2texminted";
           }
           {
@@ -247,7 +248,7 @@
               "%DOC%.tex"
             ];
             command = "tectonic";
-            env = {};
+            env = { };
             name = "tectonic";
           }
         ];
@@ -276,11 +277,11 @@
         "ungit.showButton" = true;
         "ungit.showInActiveColumn" = true;
         "workbench.colorTheme" = "Winter is Coming (Dark Blue)";
-        "workbench.iconTheme"= "material-icon-theme";
+        "workbench.iconTheme" = "material-icon-theme";
         "latex-workshop.latex.autoBuild.run" = "never";
-        "terminal.integrated.defaultProfile.linux"= "fish";
-        "editor.fontFamily"= "Fira Code";
-        "editor.fontLigatures"= true;
+        "terminal.integrated.defaultProfile.linux" = "fish";
+        "editor.fontFamily" = "Fira Code";
+        "editor.fontLigatures" = true;
       };
     };
   };

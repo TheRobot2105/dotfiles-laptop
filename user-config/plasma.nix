@@ -1,11 +1,12 @@
 {
   ...
-}: {
+}:
+{
   programs.plasma = {
     enable = true;
     workspace = {
       wallpaperSlideShow = {
-        path = ["/home/felix/.dotfiles/wallpaper/"];
+        path = [ "/home/felix/.dotfiles/wallpaper/" ];
         interval = 600;
       };
       lookAndFeel = "org.kde.breezedark.desktop";
@@ -29,7 +30,7 @@
     kscreenlocker = {
       appearance = {
         wallpaperSlideShow = {
-          path = ["/home/felix/.dotfiles/wallpaper/"];
+          path = [ "/home/felix/.dotfiles/wallpaper/" ];
           interval = 600;
         };
         alwaysShowClock = true;
