@@ -19,6 +19,7 @@ stdenv.mkDerivation {
   };
 
   postPatch = ''
+
     substituteInPlace meson.options \
     --replace-fail "option('python_path', type: 'string', value: '/usr/bin/python', description: 'Set the path to the python executable')" "option('python_path', type: 'string', value: '${python312}/bin/python3.12', description: 'Set the path to the python executable')"       
   '';
