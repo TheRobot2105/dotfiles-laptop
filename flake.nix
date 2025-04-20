@@ -17,37 +17,22 @@
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      plasma-manager,
-      ...
-    }@inputs:
-    let
-      lib = nixpkgs.lib;
+  outputs = { self, nixpkgs, home-manager, plasma-manager, ...}@inputs: {
+    nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-      nixosConfigurations = {
-        nixos-laptop = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          inherit system;
-          modules = [ ./configuration.nix ];
-        };
-      };
-      homeConfigurations = {
-        felix = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = { inherit inputs; };
-          inherit pkgs;
-          modules = [
-            inputs.plasma-manager.homeManagerModules.plasma-manager
-            ./home.nix
-          ];
-        };
-      };
+      specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
+      modules = [
+        ./configuration.nix
+        
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true; # makes hm use nixos's pkgs value
+          home-manager.extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
+          home-manager.users.felix.imports = [ ./home.nix ];
+          home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+        }
+        #inputs.plasma-manager.homeManagerModules.plasma-manager
+      ];
     };
+  };
 }
