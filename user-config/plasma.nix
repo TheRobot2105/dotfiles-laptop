@@ -40,7 +40,7 @@
       passwordRequired = true;
       autoLock = true;
       timeout = 20;
-      passwordRequiredDelay = 5;
+      passwordRequiredDelay = 60;
     };
   };
 }
