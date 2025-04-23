@@ -145,7 +145,7 @@
     enable = true;
     defaultProfile = "fish";
     profiles.fish = {
-      command = "${pkgs.fish}/bin/fish";
+      command = "tmux";
     };
   };
   # Let Home Manager install and manage itself.
