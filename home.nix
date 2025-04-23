@@ -101,6 +101,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nano";
+    TERMINAL = "kitty";
   };
 
   programs.git = {
@@ -140,6 +141,16 @@
         };
       }
     ];
+  };
+  programs.kitty = {
+    enable = true;
+    font.name = "fira-code";
+    shellIntegration.enableFishIntegration = true;
+    themeFile = "Catppuccin-Mocha";
+    settings = {
+      scrollback_lines = 10000;
+      shell = "tmux";
+    };
   };
   programs.konsole = {
     enable = true;
