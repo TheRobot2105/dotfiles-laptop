@@ -264,9 +264,9 @@
               ];
             };
             options = {
-              home_manager = {
-                expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").homeConfigurations.felix.options";
-              };
+              #home_manager = {
+              #  expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").homeConfigurations.felix.options";
+              #};
               nixos = {
                 expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").nixosConfigurations.nixos-laptop.options";
               };
