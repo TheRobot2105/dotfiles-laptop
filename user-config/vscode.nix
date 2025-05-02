@@ -3,6 +3,7 @@
   ...
 }:
 {
+
   programs.vscode = {
     enable = true;
     profiles.default = {
@@ -260,13 +261,13 @@
           nixd = {
             formatting = {
               command = [
-                "alejandra"
+                "nix fmt"
               ];
             };
             options = {
-              #home_manager = {
-              #  expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").homeConfigurations.felix.options";
-              #};
+              home_manager = {
+                expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").nixosConfigurations.nixos-laptop.options.home-manager.users.type.getSubOptions []";
+              };
               nixos = {
                 expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").nixosConfigurations.nixos-laptop.options";
               };

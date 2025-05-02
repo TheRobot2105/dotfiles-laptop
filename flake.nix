@@ -46,5 +46,6 @@
           #inputs.plasma-manager.homeManagerModules.plasma-manager
         ];
       };
+      homeConfigurations.test = { };
     };
 }
