@@ -56,6 +56,9 @@
     hello
     libation
     timeshift
+    teamspeak6-client
+    fastfetch
+    fira-code
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -69,7 +72,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -135,6 +137,7 @@
     generateCompletions = true;
     interactiveShellInit = ''
       ssh-add /home/felix/.ssh/id_rsa
+      fastfetch
     '';
     plugins = [
       {
@@ -150,12 +153,15 @@
   };
   programs.kitty = {
     enable = true;
-    font.name = "fira-code";
+    font.name = ''family="Fira Code"'';
     shellIntegration.enableFishIntegration = true;
     themeFile = "Catppuccin-Mocha";
     settings = {
       scrollback_lines = 10000;
       shell = "tmux";
+      bold_font = "auto";
+      italic_font = "auto";
+      bold_italic_font = "auto";
     };
   };
   programs.konsole = {

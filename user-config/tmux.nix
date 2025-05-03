@@ -7,6 +7,7 @@
     ";
     mouse = true;
     newSession = true;
+    disableConfirmationPrompt = true;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.catppuccin;
