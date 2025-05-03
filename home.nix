@@ -128,9 +128,6 @@
     pinentry.package = pkgs.pinentry-gnome3;
   };
 
-  #wayland.windowManager.hyprland = {
-  #  enable = true;
-  #};
   home.shell.enableFishIntegration = true;
   programs.fish = {
     enable = true;
