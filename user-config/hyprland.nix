@@ -8,11 +8,28 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      exec-once = [
+        "$terminal"
+        "nm-applet &"
+        "waybar & hyprpaper & firefox"
+      ];
+      input = {
+        kb_layout = "de";
+        touchpad = {
+          natural_scroll = true;
+        };
+      };
+      monitor = "eDP-1,1920x1080@120,0x0,1";
       "$mod" = "SUPER";
+      "$terminal" = "kitty";
+      "$fileManager" = "dolphin";
       bind =
         [
           "$mod, F, exec, firefox"
-          "$mod, T, exec, TERMINAL"
+          "$mod, Q, exec, $terminal"
+          "$mod, C, killactive,"
+          "$mod, E, exec, $fileManager"
+          "$mod, M, exit,"
         ]
         ++ (
           # workspaces

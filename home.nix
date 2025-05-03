@@ -2,7 +2,7 @@
 {
   imports = [
     ./user-config/vscode.nix
-    ./user-config/hyprland.nix
+    #./user-config/hyprland.nix
     ./user-config/plasma.nix
     ./user-config/tmux.nix
   ];
@@ -59,6 +59,8 @@
     teamspeak6-client
     fastfetch
     fira-code
+    networkmanagerapplet
+    waybar
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
