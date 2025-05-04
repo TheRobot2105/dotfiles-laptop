@@ -2,7 +2,7 @@
 {
   imports = [
     ./user-config/vscode.nix
-    #./user-config/hyprland.nix
+    ./user-config/hyprland.nix
     ./user-config/plasma.nix
     ./user-config/tmux.nix
   ];
