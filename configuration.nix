@@ -4,6 +4,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
 {
@@ -11,6 +12,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    #./hyprland-system.nix
   ];
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
@@ -33,7 +35,8 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = lib.mkDefault true;
+  networking.wireless.enable = lib.mkDefault false;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -182,31 +185,4 @@
     "nix-command"
     "flakes"
   ];
-  programs.hyprland = {
-    enable = true;
-    # set the flake package
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
-  networking.wireless = {
-    enable = true;
-    userControlled.enable = true;
-    networks = {
-
-      "Mühle" = {
-        # safe version of the above: read PSK from the
-        pskRaw = "ext:psk_muehle"; # variable psk_echelon, defined in secretsFile,
-      }; # this won't leak into /nix/store
-
-      "echelon's AP" = {
-        # SSID with spaces and/or special characters
-        psk = "ijklmnop"; # (password will be written to /nix/store!)
-      };
-
-    };
-    secretsFile = "/run/secrets/wireless.conf";
-  };
 }
