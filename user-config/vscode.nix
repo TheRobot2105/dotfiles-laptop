@@ -13,7 +13,7 @@
         james-yu.latex-workshop
         hirse.vscode-ungit
         github.vscode-github-actions
-        hiukky.flate
+        #hiukky.flate
         github.codespaces
         johnpapa.winteriscoming
         myriad-dreamin.tinymist
@@ -285,6 +285,10 @@
         "terminal.integrated.defaultProfile.linux" = "fish";
         "editor.fontFamily" = "Fira Code";
         "editor.fontLigatures" = true;
+
+        "tinymist.exportPdf" = "onSave";
+        "tinymist.lint.when" = "onType";
+        "tinymist.preview.scrollSync" = "onSelectionChange";
       };
     };
   };

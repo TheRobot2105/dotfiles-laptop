@@ -138,6 +138,7 @@
   ];
   fonts.packages = with pkgs; [
     fira-code
+    liberation_ttf
   ];
   programs.appimage = {
     enable = true;
