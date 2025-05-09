@@ -16,6 +16,7 @@
         hiukky.flate
         github.codespaces
         johnpapa.winteriscoming
+        myriad-dreamin.tinymist
         #catppuccin.catppuccin-vsc-icons
         pkief.material-icon-theme
         #platformio.platformio-vscode-ide
@@ -23,6 +24,7 @@
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
+        "chat.commandCenter.enabled"= false;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
         "latex-workshop.formatting.latex" = "latexindent";
