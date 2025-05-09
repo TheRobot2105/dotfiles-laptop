@@ -24,7 +24,7 @@
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
-        "chat.commandCenter.enabled"= false;
+        "chat.commandCenter.enabled" = false;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
         "latex-workshop.formatting.latex" = "latexindent";
