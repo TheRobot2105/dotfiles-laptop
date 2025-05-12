@@ -5,6 +5,7 @@
   pkgs,
   inputs,
   lib,
+  config,
   ...
 }:
 {
@@ -12,12 +13,18 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.sops-nix.nixosModules.sops
     #./hyprland-system.nix
   ];
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
+
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/felix/.config/sops/age/keys.txt";
+  sops.secrets.password = { };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -100,6 +107,8 @@
   users.users.felix = {
     isNormalUser = true;
     description = "Felix Kimmel";
+    hashedPasswordFile = config.sops.secrets.password.path;
+
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -135,6 +144,7 @@
     kdePackages.partitionmanager
     exfat
     exfatprogs
+    sops
   ];
   fonts.packages = with pkgs; [
     fira-code

@@ -8,6 +8,10 @@
     # use the following for unstable:
     nixpkgs.url = "nixpkgs/nixos-unstable";
     #hyprland.url = "github:hyprwm/Hyprland";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
