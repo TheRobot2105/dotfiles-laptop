@@ -24,6 +24,7 @@
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/felix/.config/sops/age/keys.txt";
+  sops.secrets.password.neededForUsers = true;
   sops.secrets.password = { };
 
   # Bootloader.
