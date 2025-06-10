@@ -28,16 +28,10 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    hello
-    kdePackages.kate
     thunderbird
-    texstudio
     discord-ptb
     #kicad
     nextcloud-client
-    prusa-slicer
     ltex-ls-plus
     qalculate-qt
     gcr
@@ -49,18 +43,14 @@
     obsidian
     qbittorrent
     kdePackages.filelight
-    curseofwar
     jabref
     inkscape
     kronometer
-    hello
     libation
-    timeshift
     teamspeak6-client
     fastfetch
     fira-code
     networkmanagerapplet
-    waybar
     gnome-multi-writer
     drawio
     vlc
@@ -68,6 +58,7 @@
     pgadmin4-desktopmode
     geogebra6
     kiwix
+    screen
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -119,6 +110,7 @@
   home.sessionVariables = {
     EDITOR = "nano";
     TERMINAL = "kitty";
+    TERM = "screen-256color";
   };
 
   programs.git = {
