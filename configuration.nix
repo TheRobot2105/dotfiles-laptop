@@ -43,8 +43,8 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = lib.mkDefault true;
-  networking.wireless.enable = lib.mkDefault false;
+  networking.networkmanager.enable = true;
+  #networking.wireless.enable = lib.mkDefault false;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
