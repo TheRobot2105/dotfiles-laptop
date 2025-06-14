@@ -21,6 +21,7 @@
         pkief.material-icon-theme
         #platformio.platformio-vscode-ide
         #ms-vscode.cpptools
+        eamodio.gitlens
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
