@@ -22,6 +22,7 @@
                 type = "luks";
                 name = "cryptroot";
                 settings = {
+                  keyFile = "/tmp/secret.key";
                   allowDiscards = true;
                 };
                 content = {
