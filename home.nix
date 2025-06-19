@@ -138,7 +138,7 @@
     enable = true;
     generateCompletions = true;
     interactiveShellInit = ''
-      ssh-add /home/felix/.ssh/id_rsa
+      ssh-add /home/felix/.ssh/id_ed25519
       fastfetch
     '';
     plugins = [

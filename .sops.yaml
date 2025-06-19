@@ -1,7 +1,7 @@
 keys:
-  - &primary age1e80r9qf2e6n5rxrv353z0lhzvzpzn7v6kzq3v5ehsn7gje30h3ysluqakr
+  - &primary ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPh2kGShe81Aa4PqLctwyaNj02WZqCmaNWeFFFegom0B felix@nixos-laptop
 creation_rules:
-  - path_regex: secrets/secrets.yaml$
+  - path_regex: secrets/.*[.]yaml
     key_groups:
     - age:
       - *primary
