@@ -27,7 +27,8 @@
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/felix/.config/sops/age/keys.txt";
+  sops.age.sshKeyPaths = [ "/home/felix/.ssh/id_ed25519" ];
+  #sops.age.keyFile = "/home/felix/.config/sops/age/keys.txt";
   sops.secrets.password.neededForUsers = true;
   sops.secrets.password = { };
 
