@@ -2,29 +2,36 @@
   description = "My first flake!";
 
   inputs = {
-    #ixpkgs.url = "nixpkgs/nixos-24.11";
+
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # use the following for unstable:
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #hyprland.url = "github:hyprwm/Hyprland";
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    # or any branch you want:
-    # nixpkgs.url = "nixpkgs/{BRANCH-NAME}";
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      disko,
       home-manager,
       plasma-manager,
       ...
@@ -47,7 +54,7 @@
             home-manager.users.felix.imports = [ ./home.nix ];
             home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
           }
-          #inputs.plasma-manager.homeManagerModules.plasma-manager
+          inputs.disko.nixosModules.disko
         ];
       };
       homeConfigurations.test = { };

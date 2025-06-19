@@ -153,6 +153,9 @@
       }
     ];
   };
+
+  xsession.numlock.enable = true;
+
   programs.kitty = {
     enable = true;
     font.name = ''family="Fira Code"'';
