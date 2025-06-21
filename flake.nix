@@ -54,7 +54,7 @@
             home-manager.users.felix.imports = [ ./home.nix ];
             home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
           }
-          inputs.disko.nixosModules.disko
+          disko.nixosModules.disko
         ];
       };
       homeConfigurations.test = { };
