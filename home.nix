@@ -30,7 +30,7 @@
   home.packages = with pkgs; [
     thunderbird
     discord-ptb
-    kicad
+    kicad-small
     nextcloud-client
     ltex-ls-plus
     qalculate-qt
