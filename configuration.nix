@@ -30,7 +30,7 @@
       sshKeyPaths = [
         "/etc/ssh/ssh_host_ed25519_key"
       ];
-      keyFile = "/home/felix/.config/sops/age/keys.txt";
+      keyFile = "/var/lib/sops-nix/key.txt";
       generateKey = true;
     };
     secrets = {
@@ -231,7 +231,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  #services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
