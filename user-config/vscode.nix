@@ -23,6 +23,7 @@
         #ms-vscode.cpptools
         #eamodio.gitlens
         mads-hartmann.bash-ide-vscode
+        timonwong.shellcheck
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
