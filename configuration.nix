@@ -18,19 +18,25 @@
     #./hyprland-system.nix
   ];
 
-  #disko.devices.disk.root.device = "/dev/nvme0n1";
-
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.sshKeyPaths = [ "/home/felix/.ssh/id_ed25519" ];
-  #sops.age.keyFile = "/home/felix/.config/sops/age/keys.txt";
-  sops.secrets.password.neededForUsers = true;
-  sops.secrets.password = { };
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age = {
+      sshKeyPaths = [ "/home/felix/.ssh/id_ed25519" ];
+      keyFile = "/home/felix/.config/sops/age/keys.txt";
+      generateKey = true;
+    };
+    secrets = {
+      password = {
+        neededForUsers = true;
+      };
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

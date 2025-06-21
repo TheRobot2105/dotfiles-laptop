@@ -30,7 +30,7 @@
   home.packages = with pkgs; [
     thunderbird
     discord-ptb
-    #kicad
+    kicad
     nextcloud-client
     ltex-ls-plus
     qalculate-qt
@@ -63,6 +63,10 @@
     gitkraken
     gitflow
     spyder
+    spice
+    virt-viewer
+    spice-gtk
+    renpy
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of

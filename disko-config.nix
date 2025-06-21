@@ -1,8 +1,15 @@
 {
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
   disko.devices = {
     disk = {
       root = {
         type = "disk";
+        disk = "nvme0n1";
         content = {
           type = "gpt";
           partitions = {
@@ -21,40 +28,24 @@
               content = {
                 type = "luks";
                 name = "cryptroot";
+                passwordFile = "/tmp/luks-password";
                 settings = {
-                  keyFile = "/tmp/secret.key";
                   allowDiscards = true;
                 };
                 content = {
-                  type = "lvm_pv";
-                  vg = "pool";
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+                  subvolumes = {
+                    "@root" = {
+                      mountpoint = "/";
+                    };
+                    "@swap" = {
+                      mountpoint = "/.swapvol";
+                      swap.swapfile.size = "16G";
+                    };
+                  };
                 };
               };
-            };
-          };
-        };
-      };
-    };
-    lvm_vg = {
-      pool = {
-        type = "lvm_vg";
-        lvs = {
-          swap = {
-            size = "16G";
-            content = {
-              type = "swap";
-              resumeDevice = true;
-            };
-          };
-          root = {
-            size = "100%";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
-              mountOptions = [
-                "defaults"
-              ];
             };
           };
         };
