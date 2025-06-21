@@ -27,7 +27,9 @@
     defaultSopsFile = ./secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
     age = {
-      sshKeyPaths = [ "/home/felix/.ssh/id_ed25519" ];
+      sshKeyPaths = [
+        "/etc/ssh/ssh_host_ed25519_key"
+      ];
       keyFile = "/home/felix/.config/sops/age/keys.txt";
       generateKey = true;
     };
@@ -120,6 +122,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.mutableUsers = false;
   users.users.felix = {
     isNormalUser = true;
     description = "Felix Kimmel";
@@ -228,7 +231,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
