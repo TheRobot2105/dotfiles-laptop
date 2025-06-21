@@ -22,6 +22,7 @@
         #platformio.platformio-vscode-ide
         #ms-vscode.cpptools
         #eamodio.gitlens
+        mads-hartmann.bash-ide-vscode
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
