@@ -37,6 +37,18 @@
       password = {
         neededForUsers = true;
       };
+      age-key = {
+        path = "/home/felix/.config/sops/age/keys.txt";
+        owner = config.users.users.felix.name;
+      };
+      ssh-private-key = {
+        path = "/home/felix/.ssh/id_ed25519";
+        owner = config.users.users.felix.name;
+      };
+      ssh-public-key = {
+        path = "/home/felix/.ssh/id_ed25519.pub";
+        owner = config.users.users.felix.name;
+      };
     };
   };
 

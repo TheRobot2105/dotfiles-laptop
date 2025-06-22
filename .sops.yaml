@@ -1,6 +1,6 @@
 keys:
-  - &user age1592v7lk89m62h3cgxl7k7cfdpa3z9sg6pkd63gus0fjzla0rgszqrg3yu2
   - &host age1z4gkqvsjrxuag4rzmvdwmct5ye45t4usp8vcm2e2q2wlqd0xzs0qjz8ew0
+  - &user age1r3uyv4ecwqjkrajuyv37veuatwcjm92jpt4jtlxytcd3wz7xr9pqrjryq2
 creation_rules:
   - path_regex: secrets/.*[.]yaml
     key_groups:
