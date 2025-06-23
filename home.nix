@@ -57,7 +57,6 @@
     gnome-multi-writer
     drawio
     vlc
-    spotify
     pgadmin4-desktopmode
     geogebra6
     kiwix
@@ -69,7 +68,7 @@
     spice
     virt-viewer
     spice-gtk
-    renpy
+    #renpy
     bitwarden
     age
     # # It is sometimes useful to fine-tune packages, for example, by applying
