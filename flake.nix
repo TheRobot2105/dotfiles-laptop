@@ -25,6 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -34,6 +38,7 @@
       disko,
       home-manager,
       plasma-manager,
+      nix-vscode-extensions,
       ...
     }@inputs:
     let
@@ -45,6 +50,11 @@
         inherit system;
         specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
         modules = [
+          {
+            nixpkgs.overlays = [
+              inputs.nix-vscode-extensions.overlays.default
+            ];
+          }
           ./configuration.nix
 
           home-manager.nixosModules.home-manager

@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./user-config/vscode.nix
@@ -50,7 +53,7 @@
     teamspeak6-client
     fastfetch
     fira-code
-    networkmanagerapplet
+    #networkmanagerapplet
     gnome-multi-writer
     drawio
     vlc
@@ -184,10 +187,4 @@
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  services.home-manager.autoExpire = {
-    enable = true;
-    frequency = "weekly";
-    store.cleanup = true;
-    store.options = "-d";
-  };
 }

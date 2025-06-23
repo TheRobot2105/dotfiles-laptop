@@ -264,4 +264,5 @@
     "nix-command"
     "flakes"
   ];
+  home-manager.backupFileExtension = "backup";
 }
