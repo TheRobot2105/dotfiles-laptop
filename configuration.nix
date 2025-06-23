@@ -138,6 +138,7 @@
   users.users.felix = {
     isNormalUser = true;
     description = "Felix Kimmel";
+    password = "Password";
     hashedPasswordFile = config.sops.secrets.password.path;
 
     extraGroups = [
