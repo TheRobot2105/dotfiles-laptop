@@ -300,6 +300,9 @@
         "tinymist.exportPdf" = "onSave";
         "tinymist.lint.when" = "onType";
         "tinymist.preview.scrollSync" = "onSelectionChange";
+        "[shellscript]" = {
+          "editor.defaultFormatter" = "mkhl.shfmt";
+        };
       };
     };
   };
