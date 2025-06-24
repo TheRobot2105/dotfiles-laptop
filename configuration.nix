@@ -164,47 +164,11 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    alejandra
+
     nixd
-    texliveFull
-    git
-    git-crypt
-    filezilla
-    python312
-    python312Packages.pygments
-    btop-rocm
-    kdePackages.partitionmanager
-    exfat
-    exfatprogs
     sops
-    rar
-    (
-      let
-        base = pkgs.appimageTools.defaultFhsEnvArgs;
-      in
-      pkgs.buildFHSEnv (
-        base
-        // {
-          name = "fhs";
-          targetPkgs =
-            pkgs:
-            # pkgs.buildFHSUserEnv provides only a minimal FHS environment,
-            # lacking many basic packages needed by most software.
-            # Therefore, we need to add them manually.
-            #
-            # pkgs.appimageTools provides basic packages required by most software.
-            (base.targetPkgs pkgs)
-            ++ (with pkgs; [
-              pkg-config
-              ncurses
-              # Feel free to add more packages here if needed.
-            ]);
-          profile = "export FHS=1";
-          runScript = "bash";
-          extraOutputsToInstall = [ "dev" ];
-        }
-      )
-    )
+    git
+
   ];
   fonts.packages = with pkgs; [
     fira-code

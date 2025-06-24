@@ -4,10 +4,10 @@
 }:
 {
   imports = [
-    ./user-config/vscode.nix
+    #./user-config/vscode.nix
     #./user-config/hyprland.nix
-    ./user-config/plasma.nix
-    ./user-config/tmux.nix
+    #./user-config/plasma.nix
+    #./user-config/tmux.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -31,47 +31,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    thunderbird
-    discord-ptb
-    kicad-small
-    nextcloud-client
-    ltex-ls-plus
-    qalculate-qt
-    gcr
-    spotify
     #github-desktop
-    element-desktop
-    zoom-us
-    libreoffice
-    obsidian
-    qbittorrent
-    kdePackages.filelight
-    jabref
-    inkscape
-    kronometer
-    libation
-    teamspeak6-client
     fastfetch
-    fira-code
     #networkmanagerapplet
-    gnome-multi-writer
-    drawio
-    vlc
-    pgadmin4-desktopmode
-    geogebra6
-    kiwix
-    screen
-    nixpkgs-lint-community
-    gitkraken
-    gitflow
-    spyder
-    spice
-    virt-viewer
-    spice-gtk
     #renpy
     bitwarden
-    age
-    shfmt
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
