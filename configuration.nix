@@ -158,7 +158,6 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    alejandra
     nixd
     texliveFull
     git
@@ -216,6 +215,8 @@
   #   enableSSHSupport = true;
   # };
   services.power-profiles-daemon.enable = true;
+
+  services.fwupd.enable = true;
 
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = [ "felix" ];
