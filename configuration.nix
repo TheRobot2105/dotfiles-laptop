@@ -134,13 +134,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.mutableUsers = false;
   users.users.felix = {
     isNormalUser = true;
     description = "Felix Kimmel";
-    password = "Password";
-    hashedPasswordFile = config.sops.secrets.password.path;
-
     extraGroups = [
       "networkmanager"
       "wheel"
