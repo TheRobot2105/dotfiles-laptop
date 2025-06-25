@@ -93,6 +93,8 @@
         "terminal.integrated.commandsToSkipShell" = [
           "language-julia.interrupt"
         ];
+        "julia.symbolCacheDownload" = true;
+        "julia.enableTelemetry" = false;
       };
     };
   };
