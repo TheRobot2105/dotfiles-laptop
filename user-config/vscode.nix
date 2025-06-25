@@ -15,7 +15,7 @@
         jnoortheen.nix-ide
         ltex-plus.vscode-ltex-plus
         james-yu.latex-workshop
-        hirse.vscode-ungit
+        #hirse.vscode-ungit
         #github.vscode-github-actions
         #hiukky.flate
         github.codespaces
@@ -33,6 +33,7 @@
         editorconfig.editorconfig
         aaron-bond.better-comments
         natqe.reload
+        julialang.language-julia
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
@@ -77,6 +78,7 @@
         "ungit.showInActiveColumn" = true;
         "workbench.colorTheme" = "Winter is Coming (Dark Blue)";
         "workbench.iconTheme" = "material-icon-theme";
+        "workbench.startupEditor" = "none";
         "latex-workshop.latex.autoBuild.run" = "never";
         "terminal.integrated.defaultProfile.linux" = "fish";
         "editor.fontFamily" = "Fira Code";
@@ -88,6 +90,9 @@
         "[shellscript]" = {
           "editor.defaultFormatter" = "mkhl.shfmt";
         };
+        "terminal.integrated.commandsToSkipShell" = [
+          "language-julia.interrupt"
+        ];
       };
     };
   };
