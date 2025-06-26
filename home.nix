@@ -100,9 +100,9 @@
     };
   };
 
-  programs.gpg.enable = true;
+  programs.gpg.enable = false;
   services.gpg-agent = {
-    enable = true;
+    enable = false;
     pinentry.package = pkgs.pinentry-gnome3;
   };
 

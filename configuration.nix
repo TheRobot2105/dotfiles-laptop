@@ -171,7 +171,7 @@
     liberation_ttf
   ];
   programs.appimage = {
-    enable = true;
+    enable = false;
     binfmt = true;
   };
   # Some programs need SUID wrappers, can be configured further or are
@@ -183,7 +183,7 @@
   # };
   services.power-profiles-daemon.enable = true;
 
-  programs.virt-manager.enable = true;
+  programs.virt-manager.enable = false;
   users.groups.libvirtd.members = [ "felix" ];
   virtualisation = {
     libvirtd = {
@@ -192,10 +192,10 @@
       qemu.swtpm.enable = true;
     };
   };
-  virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.spiceUSBRedirection.enable = false;
 
   programs.steam = {
-    enable = true;
+    enable = false;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
