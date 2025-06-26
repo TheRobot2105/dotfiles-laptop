@@ -28,7 +28,6 @@
         #eamodio.gitlens
         mads-hartmann.bash-ide-vscode
         timonwong.shellcheck
-        vscodevim.vim
         mkhl.shfmt
         editorconfig.editorconfig
         aaron-bond.better-comments
