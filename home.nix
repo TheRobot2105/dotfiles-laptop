@@ -174,7 +174,7 @@
     themeFile = "Catppuccin-Mocha";
     settings = {
       scrollback_lines = 10000;
-      shell = "tmux";
+      shell = "fish";
       bold_font = "auto";
       italic_font = "auto";
       bold_italic_font = "auto";
