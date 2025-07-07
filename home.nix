@@ -30,63 +30,67 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    thunderbird
-    discord-ptb
-    kicad-small
-    nextcloud-client
-    ltex-ls-plus
-    qalculate-qt
-    gcr
-    spotify
-    #github-desktop
-    element-desktop
-    zoom-us
-    libreoffice
-    obsidian
-    qbittorrent
-    kdePackages.filelight
-    jabref
-    inkscape
-    kronometer
-    libation
-    teamspeak6-client
-    fastfetch
-    fira-code
-    #networkmanagerapplet
-    gnome-multi-writer
-    drawio
-    vlc
-    pgadmin4-desktopmode
-    geogebra6
-    kiwix
-    screen
-    nixpkgs-lint-community
-    gitkraken
-    gitflow
-    spyder
-    spice
-    virt-viewer
-    spice-gtk
-    #renpy
-    bitwarden
-    age
-    shfmt
-    julia-bin
+  home.packages =
+    with pkgs;
+    [
+      thunderbird
+      discord-ptb
+      kicad-small
+      nextcloud-client
+      ltex-ls-plus
+      qalculate-qt
+      gcr
+      spotify
+      #github-desktop
+      element-desktop
+      zoom-us
+      libreoffice
+      obsidian
+      qbittorrent
+      kdePackages.filelight
+      jabref
+      inkscape
+      kronometer
+      libation
+      teamspeak6-client
+      fastfetch
+      fira-code
+      #networkmanagerapplet
+      gnome-multi-writer
+      drawio
+      vlc
+      pgadmin4-desktopmode
+      geogebra6
+      kiwix
+      screen
+      nixpkgs-lint-community
+      gitkraken
+      gitflow
+      spyder
+      spice
+      virt-viewer
+      spice-gtk
+      bitwarden
+      age
+      shfmt
+      julia-bin
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
+    ]
+    ++ (with pkgs.stablepkgs; [
+      renpy
+    ]);
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {

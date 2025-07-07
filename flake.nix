@@ -5,6 +5,8 @@
 
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -25,6 +27,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +38,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-stable,
       disko,
       home-manager,
       plasma-manager,
@@ -53,6 +57,12 @@
           {
             nixpkgs.overlays = [
               inputs.nix-vscode-extensions.overlays.default
+              (final: _prev: {
+                stablepkgs = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
             ];
           }
           ./configuration.nix
