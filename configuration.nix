@@ -70,14 +70,8 @@
   networking.networkmanager = {
     enable = true;
     plugins = with pkgs; [
-      networkmanager-fortisslvpn
-      networkmanager-iodine
-      networkmanager-l2tp
       networkmanager-openconnect
       networkmanager-openvpn
-      networkmanager-sstp
-      networkmanager-strongswan
-      networkmanager-vpnc
     ];
   };
   #networking.wireless.enable = lib.mkDefault false;
