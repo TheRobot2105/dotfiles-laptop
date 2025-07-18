@@ -32,6 +32,10 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-facter-modules = {
+      url = "github:nix-community/nixos-facter-modules";
+    };
   };
 
   outputs =
@@ -75,6 +79,8 @@
             home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
           }
           disko.nixosModules.disko
+          #inputs.nixos-facter-modules.nixosModules.facter
+          #{ config.facter.reportPath = ./facter.json; }
         ];
       };
       homeConfigurations.test = { };
