@@ -33,6 +33,7 @@
         aaron-bond.better-comments
         natqe.reload
         julialang.language-julia
+        ccimage.jsonviewer
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
