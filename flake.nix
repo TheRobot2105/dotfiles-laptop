@@ -36,6 +36,7 @@
     nixos-facter-modules = {
       url = "github:nix-community/nixos-facter-modules";
     };
+
   };
 
   outputs =
@@ -83,6 +84,5 @@
           #{ config.facter.reportPath = ./facter.json; }
         ];
       };
-      homeConfigurations.test = { };
     };
 }

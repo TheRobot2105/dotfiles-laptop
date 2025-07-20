@@ -167,6 +167,14 @@
         };
       }
     ];
+    shellInitLast = ''
+      direnv hook fish | source
+    '';
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
 
   xsession.numlock.enable = true;
