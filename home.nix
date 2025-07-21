@@ -169,6 +169,7 @@
     ];
     shellInitLast = ''
       direnv hook fish | source
+      export DIRENV_LOG_FORMAT=""
     '';
   };
 
