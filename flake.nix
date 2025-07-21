@@ -5,6 +5,8 @@
 
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -29,12 +31,18 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-facter-modules = {
+      url = "github:nix-community/nixos-facter-modules";
+    };
+
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      nixpkgs-stable,
       disko,
       home-manager,
       plasma-manager,
@@ -53,6 +61,12 @@
           {
             nixpkgs.overlays = [
               inputs.nix-vscode-extensions.overlays.default
+              (final: _prev: {
+                stablepkgs = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
             ];
           }
           ./configuration.nix
@@ -65,8 +79,9 @@
             home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
           }
           disko.nixosModules.disko
+          inputs.nixos-facter-modules.nixosModules.facter
+          { config.facter.reportPath = ./facter.json; }
         ];
       };
-      homeConfigurations.test = { };
     };
 }
