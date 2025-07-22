@@ -16,7 +16,7 @@
     inputs.sops-nix.nixosModules.sops
     #./disko-config.nix
     #./hyprland-system.nix
-    ./cachix
+    ./cachix.nix
   ];
 
   sops = {
