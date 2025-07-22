@@ -74,15 +74,12 @@
                   config.allowUnfree = true;
                 };
               })
-              (final: _prev: {
-                nur = import nur {
-                  system = final.system;
-                  config.allowUnfree = true;
-                };
-              })
             ];
           }
           ./configuration.nix
+
+          nur.modules.nixos.default
+          nur.legacyPackages."${system}".repos.iopq.modules.xraya
 
           home-manager.nixosModules.home-manager
           {
