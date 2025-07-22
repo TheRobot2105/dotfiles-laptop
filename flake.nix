@@ -37,6 +37,11 @@
       url = "github:nix-community/nixos-facter-modules";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -48,6 +53,7 @@
       home-manager,
       plasma-manager,
       nix-vscode-extensions,
+      nur,
       ...
     }@inputs:
     let
@@ -64,6 +70,12 @@
               inputs.nix-vscode-extensions.overlays.default
               (final: _prev: {
                 stablepkgs = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
+              (final: _prev: {
+                nur = import nur {
                   system = final.system;
                   config.allowUnfree = true;
                 };
