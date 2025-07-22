@@ -16,6 +16,7 @@
     inputs.sops-nix.nixosModules.sops
     #./disko-config.nix
     #./hyprland-system.nix
+    ./cachix
   ];
 
   sops = {
@@ -177,6 +178,7 @@
     exfatprogs
     sops
     rar
+    cachix
     (
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
