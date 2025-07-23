@@ -90,6 +90,9 @@
     ]
     ++ (with pkgs.stablepkgs; [
       renpy
+    ])
+    ++ (with pkgs.nur.repos; [
+
     ]);
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

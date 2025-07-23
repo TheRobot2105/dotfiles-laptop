@@ -79,7 +79,6 @@
           ./configuration.nix
 
           nur.modules.nixos.default
-          nur.legacyPackages."${system}".repos.iopq.modules.xraya
 
           home-manager.nixosModules.home-manager
           {
