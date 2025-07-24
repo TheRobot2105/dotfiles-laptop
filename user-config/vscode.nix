@@ -16,7 +16,7 @@
         ltex-plus.vscode-ltex-plus
         james-yu.latex-workshop
         #hirse.vscode-ungit
-        #github.vscode-github-actions
+        github.vscode-github-actions
         #hiukky.flate
         github.codespaces
         johnpapa.winteriscoming

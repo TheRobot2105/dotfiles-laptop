@@ -179,6 +179,7 @@
     sops
     rar
     cachix
+    nixfmt-tree
     (
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
