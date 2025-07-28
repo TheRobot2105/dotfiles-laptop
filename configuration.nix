@@ -199,6 +199,7 @@
             ++ (with pkgs; [
               pkg-config
               ncurses
+              chromium
               # Feel free to add more packages here if needed.
             ]);
           profile = "export FHS=1";
