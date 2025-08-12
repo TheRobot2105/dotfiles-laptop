@@ -8,6 +8,7 @@
     #./user-config/hyprland.nix
     ./user-config/plasma.nix
     ./user-config/tmux.nix
+    #./user-config/rclone.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -80,7 +81,6 @@
       minigalaxy
       heroic
       mullvad
-      rclone
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
