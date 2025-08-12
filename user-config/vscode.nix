@@ -18,7 +18,7 @@
         #hirse.vscode-ungit
         github.vscode-github-actions
         #hiukky.flate
-        github.codespaces
+        #github.codespaces
         johnpapa.winteriscoming
         myriad-dreamin.tinymist
         #catppuccin.catppuccin-vsc-icons
@@ -33,6 +33,7 @@
         aaron-bond.better-comments
         natqe.reload
         julialang.language-julia
+        ms-vscode-remote.remote-ssh
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
