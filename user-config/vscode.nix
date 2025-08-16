@@ -34,6 +34,8 @@
         natqe.reload
         julialang.language-julia
         ms-vscode-remote.remote-ssh
+        coolbear.systemd-unit-file
+        tamasfe.even-better-toml
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
