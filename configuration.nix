@@ -145,7 +145,7 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  programs.kdeconnect.enable = true;
+  programs.kdeconnect.enable = false;
 
   # Allow unfree packages
   nixpkgs = {
@@ -187,18 +187,18 @@
   users.groups.libvirtd.members = [ "felix" ];
   virtualisation = {
     libvirtd = {
-      enable = true;
-      qemu.ovmf.enable = true;
-      qemu.swtpm.enable = true;
+      enable = false;
+      qemu.ovmf.enable = false;
+      qemu.swtpm.enable = false;
     };
   };
   virtualisation.spiceUSBRedirection.enable = false;
 
   programs.steam = {
     enable = false;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = false; # Open ports in the firewall for Steam Local Network Game Transfers
 
   };
   # List services that you want to enable:
