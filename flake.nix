@@ -85,7 +85,7 @@
             home-manager.useGlobalPkgs = true; # makes hm use nixos's pkgs value
             home-manager.extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
             home-manager.users.felix.imports = [ ./home.nix ];
-            home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+            home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
           }
           disko.nixosModules.disko
           #inputs.nixos-facter-modules.nixosModules.facter

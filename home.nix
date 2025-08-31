@@ -62,12 +62,10 @@
       vlc
       pgadmin4-desktopmode
       geogebra6
-      kiwix
       screen
       nixpkgs-lint-community
       gitkraken
       gitflow
-      spyder
       spice
       virt-viewer
       spice-gtk
@@ -96,7 +94,7 @@
       # '')
     ]
     ++ (with pkgs.stablepkgs; [
-      renpy
+
     ])
     ++ (with pkgs.nur.repos; [
 
