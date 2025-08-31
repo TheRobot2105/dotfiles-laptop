@@ -18,11 +18,6 @@
     #./hyprland-system.nix
   ];
 
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
-
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
@@ -56,11 +51,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth = {
-    enable = true;
+    enable = false;
     theme = "breeze";
   };
 
-  zramSwap.enable = true;
+  zramSwap.enable = false;
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
@@ -115,10 +110,10 @@
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
-    enable = true;
+    enable = false;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -143,7 +138,7 @@
     ];
   };
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox.enable = false;
 
   programs.kdeconnect.enable = false;
 
@@ -160,8 +155,6 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-
-    nixd
     sops
     git
 
