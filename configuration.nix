@@ -203,6 +203,7 @@
               pkg-config
               ncurses
               chromium
+              python3
               # Feel free to add more packages here if needed.
             ]);
           profile = "export FHS=1";
