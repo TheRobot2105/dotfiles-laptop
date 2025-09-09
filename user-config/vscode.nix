@@ -36,6 +36,7 @@
         ms-vscode-remote.remote-ssh
         coolbear.systemd-unit-file
         tamasfe.even-better-toml
+        tboby.cwtools-vscode
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
