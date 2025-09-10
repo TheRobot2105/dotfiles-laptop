@@ -157,6 +157,7 @@
     wget
     sops
     git
+    git-lfs
 
   ];
   fonts.packages = with pkgs; [
