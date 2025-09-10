@@ -173,6 +173,7 @@
     texlive.combined.scheme-full
     git
     git-crypt
+    git-lfs
     filezilla
     python312
     python312Packages.pygments
