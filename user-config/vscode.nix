@@ -98,6 +98,7 @@
         ];
         "julia.symbolCacheDownload" = true;
         "julia.enableTelemetry" = false;
+        "julia.environmentPath" = "\${workspaceFolder}";
       };
     };
   };
