@@ -88,8 +88,8 @@
             home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
           }
           disko.nixosModules.disko
-          #inputs.nixos-facter-modules.nixosModules.facter
-          #{ config.facter.reportPath = ./facter.json; }
+          inputs.nixos-facter-modules.nixosModules.facter
+          { config.facter.reportPath = ./facter.json; }
         ];
       };
     };

@@ -12,9 +12,9 @@
 
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
     inputs.sops-nix.nixosModules.sops
-    #./disko-config.nix
+    ./disko-config.nix
     #./hyprland-system.nix
     ./cachix.nix
   ];
