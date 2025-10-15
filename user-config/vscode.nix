@@ -99,7 +99,7 @@
         "julia.symbolCacheDownload" = true;
         "julia.enableTelemetry" = false;
         "julia.environmentPath" = "\${workspaceFolder}";
-        "chat.disableAIFeatures"= false;
+        "chat.disableAIFeatures"= true;
         "workbench.secondarySideBar.defaultVisibility"= "hidden";
       };
     };
