@@ -51,7 +51,6 @@
       kdePackages.filelight
       jabref
       inkscape
-      kronometer
       libation
       teamspeak6-client
       fastfetch
