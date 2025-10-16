@@ -251,6 +251,7 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
 
   };
+  programs.localsend.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
