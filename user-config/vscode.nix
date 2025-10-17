@@ -23,8 +23,6 @@
         myriad-dreamin.tinymist
         #catppuccin.catppuccin-vsc-icons
         pkief.material-icon-theme
-        platformio.platformio-ide
-        ms-vscode.cpptools
         #eamodio.gitlens
         mads-hartmann.bash-ide-vscode
         timonwong.shellcheck
@@ -101,7 +99,6 @@
         "julia.environmentPath" = "\${workspaceFolder}";
         "chat.disableAIFeatures" = true;
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
-        "platformio-ide.useBuiltinPIOCore" = false;
       };
     };
   };
