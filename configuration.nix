@@ -215,6 +215,11 @@
       )
     )
   ];
+
+  services.udev.packages = [
+    pkgs.platformio-core
+    pkgs.openocd
+  ];
   fonts.packages = with pkgs; [
     fira-code
     liberation_ttf

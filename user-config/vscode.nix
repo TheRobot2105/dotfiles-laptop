@@ -23,8 +23,8 @@
         myriad-dreamin.tinymist
         #catppuccin.catppuccin-vsc-icons
         pkief.material-icon-theme
-        #platformio.platformio-vscode-ide
-        #ms-vscode.cpptools
+        platformio.platformio-ide
+        ms-vscode.cpptools
         #eamodio.gitlens
         mads-hartmann.bash-ide-vscode
         timonwong.shellcheck
@@ -99,8 +99,9 @@
         "julia.symbolCacheDownload" = true;
         "julia.enableTelemetry" = false;
         "julia.environmentPath" = "\${workspaceFolder}";
-        "chat.disableAIFeatures"= true;
-        "workbench.secondarySideBar.defaultVisibility"= "hidden";
+        "chat.disableAIFeatures" = true;
+        "workbench.secondarySideBar.defaultVisibility" = "hidden";
+        "platformio-ide.useBuiltinPIOCore" = false;
       };
     };
   };
