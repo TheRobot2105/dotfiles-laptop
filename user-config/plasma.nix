@@ -2,9 +2,12 @@
   ...
 }:
 {
+  imports = [
+    # "./user-config/panels.nix"
+  ];
   programs.plasma = {
     enable = true;
-    configFile.kcminputrc.Keyboard.NumLock.value = 0; 
+    configFile.kcminputrc.Keyboard.NumLock.value = 0;
     workspace = {
       wallpaperSlideShow = {
         path = [ "/home/felix/.dotfiles/wallpaper/" ];

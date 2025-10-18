@@ -1,0 +1,9 @@
+{ ... }:
+{
+  panels = {
+    taskbar = {
+      aligment = "center";
+      
+    };
+  };
+}
