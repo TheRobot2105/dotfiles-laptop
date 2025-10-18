@@ -4,6 +4,7 @@
 {
   programs.plasma = {
     enable = true;
+    configFile.kcminputrc.Keyboard.NumLock.value = 0; 
     workspace = {
       wallpaperSlideShow = {
         path = [ "/home/felix/.dotfiles/wallpaper/" ];

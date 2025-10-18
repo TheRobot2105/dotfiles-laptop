@@ -2526,9 +2526,9 @@
           "hex": "121c",
           "value": 4636
         },
-        "sysfs_id": "/devices/platform/AMDI0011:00/i2c-10/i2c-ALP0019:00/0018:044E:121C.0001/input/input18",
+        "sysfs_id": "/devices/platform/AMDI0011:00/i2c-10/i2c-ALP0019:00/0018:044E:121C.0001/input/input25",
         "unix_device_names": [
-          "/dev/input/event9",
+          "/dev/input/event16",
           "/dev/input/ + handler"
         ]
       },
@@ -2619,7 +2619,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 56
+            "address": 53
           },
           {
             "type": "io",
@@ -2648,7 +2648,6 @@
               "11",
               "12",
               "13",
-              "14",
               "36",
               "40",
               "44",
@@ -2666,7 +2665,8 @@
               "124",
               "128",
               "132",
-              "136"
+              "136",
+              "140"
             ],
             "frequencies": [
               "2.412",
@@ -2682,7 +2682,6 @@
               "2.462",
               "2.467",
               "2.472",
-              "2.484",
               "5.18",
               "5.2",
               "5.22",
@@ -2700,7 +2699,8 @@
               "5.62",
               "5.64",
               "5.66",
-              "5.68"
+              "5.68",
+              "5.7"
             ],
             "auth_modes": [
               "open",
@@ -2824,6 +2824,47 @@
     "network_interface": [
       {
         "index": 63,
+        "attached_to": 18,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
+        },
+        "model": "Ethernet network interface",
+        "sysfs_id": "/class/net/wlp2s0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.4/0000:02:00.0",
+        "unix_device_names": [
+          "wlp2s0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 53
+          },
+          {
+            "type": "phwaddr",
+            "address": 53
+          }
+        ],
+        "driver": "rtw_8822be",
+        "driver_module": "rtw88_8822be",
+        "drivers": [
+          "rtw_8822be"
+        ],
+        "driver_modules": [
+          "rtw88_8822be"
+        ]
+      },
+      {
+        "index": 64,
         "attached_to": 24,
         "class_list": [
           "network_interface"
@@ -2861,47 +2902,6 @@
         ],
         "driver_modules": [
           "r8169"
-        ]
-      },
-      {
-        "index": 64,
-        "attached_to": 18,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0001",
-          "name": "Ethernet",
-          "value": 1
-        },
-        "model": "Ethernet network interface",
-        "sysfs_id": "/class/net/wlp2s0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.4/0000:02:00.0",
-        "unix_device_names": [
-          "wlp2s0"
-        ],
-        "resources": [
-          {
-            "type": "hwaddr",
-            "address": 56
-          },
-          {
-            "type": "phwaddr",
-            "address": 53
-          }
-        ],
-        "driver": "rtw_8822be",
-        "driver_module": "rtw88_8822be",
-        "drivers": [
-          "rtw_8822be"
-        ],
-        "driver_modules": [
-          "rtw88_8822be"
         ]
       },
       {

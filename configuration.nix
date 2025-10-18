@@ -15,6 +15,7 @@
     ./disko-config.nix
     #./hyprland-system.nix
     ./cachix.nix
+    ./user-config/webdav.nix
   ];
 
   sops = {
