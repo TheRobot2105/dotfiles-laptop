@@ -7,7 +7,6 @@
     ./user-config/vscode.nix
     ./user-config/plasma.nix
     ./user-config/tmux.nix
-    # ./user-config/webdav.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -74,7 +73,6 @@
       prismlauncher
       ftb-app
       nix-output-monitor
-      minigalaxy
       heroic
       zotero
       nix-init
