@@ -1,9 +1,11 @@
 { ... }:
 {
-  panels = {
-    taskbar = {
-      aligment = "center";
-      
+  programs.plasma = {
+    panels = {
+      taskbar = {
+        aligment = "center";
+
+      };
     };
   };
 }
