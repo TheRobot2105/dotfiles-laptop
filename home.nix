@@ -35,7 +35,6 @@
       thunderbird
       discord-ptb
       kicad-small
-      nextcloud-client
       ltex-ls-plus
       qalculate-qt
       gcr
@@ -53,16 +52,12 @@
       teamspeak6-client
       fastfetch
       fira-code
-      #networkmanagerapplet
-      gnome-multi-writer
       drawio
       vlc
       pgadmin4-desktopmode
       geogebra6
       screen
       nixpkgs-lint-community
-      gitkraken
-      gitflow
       spice
       virt-viewer
       spice-gtk
@@ -70,8 +65,6 @@
       age
       shfmt
       julia-bin
-      prismlauncher
-      ftb-app
       nix-output-monitor
       heroic
       zotero
@@ -79,6 +72,7 @@
       parsec-bin
       blender
       gimp3
+      rclone-ui
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
