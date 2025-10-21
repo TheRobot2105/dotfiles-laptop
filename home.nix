@@ -34,14 +34,10 @@
     [
       thunderbird
       discord-ptb
-      kicad-small
       ltex-ls-plus
       qalculate-qt
       gcr
       spotify
-      #github-desktop
-      element-desktop
-      zoom-us
       libreoffice
       obsidian
       qbittorrent
@@ -67,11 +63,8 @@
       julia-bin
       nix-output-monitor
       heroic
-      zotero
       nix-init
       parsec-bin
-      blender
-      gimp3
       rclone-ui
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
@@ -144,12 +137,6 @@
     };
   };
 
-  programs.gpg.enable = true;
-  services.gpg-agent = {
-    enable = true;
-    pinentry.package = pkgs.pinentry-gnome3;
-  };
-
   home.shell.enableFishIntegration = true;
   programs.fish = {
     enable = true;
@@ -195,6 +182,7 @@
       bold_italic_font = "auto";
     };
   };
+
   programs.konsole = {
     enable = true;
     defaultProfile = "fish";
