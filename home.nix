@@ -136,11 +136,11 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userEmail = "felix.kimmel@web.de";
-    userName = "Felix Kimmel";
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
       commit.gpgsign = false;
+      user.Email = "felix.kimmel@web.de";
+      user.Name = "Felix Kimmel";
     };
   };
 
