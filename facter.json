@@ -1705,7 +1705,7 @@
           "[13]",
           "[14]"
         ],
-        "bogo": 4392,
+        "bogo": 4391,
         "cache": 512,
         "units": 8,
         "physical_id": 0,
@@ -2526,9 +2526,9 @@
           "hex": "121c",
           "value": 4636
         },
-        "sysfs_id": "/devices/platform/AMDI0011:00/i2c-10/i2c-ALP0019:00/0018:044E:121C.0001/input/input25",
+        "sysfs_id": "/devices/platform/AMDI0011:00/i2c-10/i2c-ALP0019:00/0018:044E:121C.0001/input/input23",
         "unix_device_names": [
-          "/dev/input/event16",
+          "/dev/input/event13",
           "/dev/input/ + handler"
         ]
       },
@@ -2824,7 +2824,7 @@
     "network_interface": [
       {
         "index": 63,
-        "attached_to": 18,
+        "attached_to": 0,
         "class_list": [
           "network_interface"
         ],
@@ -2834,33 +2834,14 @@
           "value": 263
         },
         "sub_class": {
-          "hex": "0001",
-          "name": "Ethernet",
-          "value": 1
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
         },
-        "model": "Ethernet network interface",
-        "sysfs_id": "/class/net/wlp2s0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.4/0000:02:00.0",
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
         "unix_device_names": [
-          "wlp2s0"
-        ],
-        "resources": [
-          {
-            "type": "hwaddr",
-            "address": 53
-          },
-          {
-            "type": "phwaddr",
-            "address": 53
-          }
-        ],
-        "driver": "rtw_8822be",
-        "driver_module": "rtw88_8822be",
-        "drivers": [
-          "rtw_8822be"
-        ],
-        "driver_modules": [
-          "rtw88_8822be"
+          "lo"
         ]
       },
       {
@@ -2906,7 +2887,7 @@
       },
       {
         "index": 65,
-        "attached_to": 0,
+        "attached_to": 18,
         "class_list": [
           "network_interface"
         ],
@@ -2916,14 +2897,33 @@
           "value": 263
         },
         "sub_class": {
-          "hex": "0000",
-          "name": "Loopback",
-          "value": 0
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
         },
-        "model": "Loopback network interface",
-        "sysfs_id": "/class/net/lo",
+        "model": "Ethernet network interface",
+        "sysfs_id": "/class/net/wlp2s0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.4/0000:02:00.0",
         "unix_device_names": [
-          "lo"
+          "wlp2s0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 53
+          },
+          {
+            "type": "phwaddr",
+            "address": 53
+          }
+        ],
+        "driver": "rtw_8822be",
+        "driver_module": "rtw88_8822be",
+        "drivers": [
+          "rtw_8822be"
+        ],
+        "driver_modules": [
+          "rtw88_8822be"
         ]
       }
     ],
@@ -4079,8 +4079,8 @@
     "bios": {
       "handle": 16,
       "vendor": "HP",
-      "version": "Q81 Ver. 01.26.01",
-      "date": "09/23/2024",
+      "version": "Q81 Ver. 01.29.00",
+      "date": "07/01/2025",
       "features": [
         "PCI supported",
         "PCMCIA supported",
@@ -4105,7 +4105,7 @@
       "handle": 18,
       "manufacturer": "HP",
       "product": "83D5",
-      "version": "KBC Version 08.62.00",
+      "version": "KBC Version 08.63.00",
       "board_type": {
         "hex": "000a",
         "name": "Motherboard",
@@ -4767,7 +4767,7 @@
       "handle": 17,
       "manufacturer": "HP",
       "product": "HP EliteBook 755 G5",
-      "version": "SBKPF",
+      "version": "SBKPFV3",
       "wake_up": {
         "hex": "0006",
         "name": "Power Switch",

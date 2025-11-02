@@ -51,7 +51,6 @@
       drawio
       vlc
       pgadmin4-desktopmode
-      geogebra6
       screen
       nixpkgs-lint-community
       spice
@@ -66,6 +65,7 @@
       nix-init
       parsec-bin
       rclone-ui
+      avrdudess
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
