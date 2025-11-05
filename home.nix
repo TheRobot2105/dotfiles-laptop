@@ -56,7 +56,7 @@
       spice
       virt-viewer
       spice-gtk
-      bitwarden
+      bitwarden-desktop
       age
       shfmt
       julia-bin
@@ -66,6 +66,16 @@
       parsec-bin
       rclone-ui
       avrdudess
+      mqttx
+      
+      (python3.withPackages (
+        ps: with ps; [
+          numpy # these two are
+          scipy # probably redundant to pandas
+          matplotlib
+          jupyterlab
+        ]
+      ))
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -83,7 +93,7 @@
 
     ])
     ++ (with pkgs.nur.repos; [
-      #therobot2105.vivado-2020_1
+      therobot2105.vivado-2020_1
     ]);
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
