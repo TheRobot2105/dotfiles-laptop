@@ -184,6 +184,7 @@
     rar
     cachix
     nixfmt-tree
+    yubioath-flutter
     (
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
@@ -232,6 +233,11 @@
   #   enableSSHSupport = true;
   # };
   services.power-profiles-daemon.enable = true;
+
+    services.udev.packages = with pkgs; [ 
+    platformio-core.udev
+    openocd
+  ];
 
   services.fwupd.enable = true;
 

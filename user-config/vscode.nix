@@ -35,6 +35,8 @@
         coolbear.systemd-unit-file
         tamasfe.even-better-toml
         tboby.cwtools-vscode
+        platformio.platformio-ide
+        ms-vscode.cpptools
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
@@ -99,6 +101,7 @@
         "julia.environmentPath" = "\${workspaceFolder}";
         "chat.disableAIFeatures" = true;
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
+        "platformio-ide.useBuiltinPIOCore"=false;
       };
     };
   };

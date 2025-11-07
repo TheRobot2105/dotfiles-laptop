@@ -67,7 +67,7 @@
       rclone-ui
       avrdudess
       mqttx
-      
+
       (python3.withPackages (
         ps: with ps; [
           numpy # these two are
