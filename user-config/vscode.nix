@@ -101,7 +101,7 @@
         "julia.environmentPath" = "\${workspaceFolder}";
         "chat.disableAIFeatures" = true;
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
-        "platformio-ide.useBuiltinPIOCore"=false;
+        "platformio-ide.useBuiltinPIOCore" = false;
       };
     };
   };

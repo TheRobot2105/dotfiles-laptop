@@ -234,7 +234,7 @@
   # };
   services.power-profiles-daemon.enable = true;
 
-    services.udev.packages = with pkgs; [ 
+  services.udev.packages = with pkgs; [
     platformio-core.udev
     openocd
   ];

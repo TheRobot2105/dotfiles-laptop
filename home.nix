@@ -193,6 +193,18 @@
     };
   };
 
+  services.syncthing = {
+    enable = true;
+    overrideDevices = true; # overrides any devices added or deleted through the WebUI
+    settings = {
+      devices = {
+        "copyparty" = {
+          id = "L62NXFW-4KGPXKW-XHT7VCQ-73CKJCE-D2EU666-SZW2YKC-W2UBSTW-3JZJ4QL";
+        };
+      };
+    };
+  };
+
   programs.konsole = {
     enable = true;
     defaultProfile = "fish";
