@@ -44,6 +44,10 @@
         path = "/home/felix/.ssh/id_ed25519.pub";
         owner = config.users.users.felix.name;
       };
+      syncthing-cert = {
+      };
+      syncthing-key = {
+      };
     };
   };
 
@@ -238,6 +242,29 @@
     platformio-core.udev
     openocd
   ];
+
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    group = "users";
+    user = "felix";
+    dataDir = "/home/felix/Documents";
+    configDir = "/home/felix/.config/syncthing";
+    overrideDevices = true; # overrides any devices added or deleted through the WebUI
+    settings = {
+      devices = {
+        "pCopyparty" = {
+          id = "L62NXFW-4KGPXKW-XHT7VCQ-73CKJCE-D2EU666-SZW2YKC-W2UBSTW-3JZJ4QL";
+        };
+      };
+      gui = {
+        user = "admin";
+      };
+    };
+    guiPasswordFile = config.sops.secrets.password.path;
+    key = config.sops.secrets.syncthing-key.path;
+    cert = config.sops.secrets.syncthing-cert.path;
+  };
 
   services.fwupd.enable = true;
 
