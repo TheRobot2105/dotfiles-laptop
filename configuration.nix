@@ -189,6 +189,7 @@
     cachix
     nixfmt-tree
     yubioath-flutter
+    syncthingtray
     (
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
@@ -248,20 +249,23 @@
     openDefaultPorts = true;
     group = "users";
     user = "felix";
-    dataDir = "/home/felix/Documents";
+    dataDir = "/home/felix/syncthing";
     configDir = "/home/felix/.config/syncthing";
     overrideDevices = true; # overrides any devices added or deleted through the WebUI
+    overrideFolders = false;
     settings = {
       devices = {
         "pCopyparty" = {
           id = "L62NXFW-4KGPXKW-XHT7VCQ-73CKJCE-D2EU666-SZW2YKC-W2UBSTW-3JZJ4QL";
         };
-      };
-      gui = {
-        user = "admin";
+                "Desktop" = {
+          id = "JJXJFPD-DPCLLWG-JCK5QAG-65UGLLO-PRKHRDY-BKOVMAS-HWMOMY7-AOU5NQK";
+        };
+        "syncthing-hetzner" = {
+          id = "IASJQL5-BZWJAKW-D56RIAS-AL6J3D4-UVNZIBK-RUAARSB-PLG2XFY-FLYRRAN";
+        };
       };
     };
-    guiPasswordFile = config.sops.secrets.password.path;
     key = config.sops.secrets.syncthing-key.path;
     cert = config.sops.secrets.syncthing-cert.path;
   };
