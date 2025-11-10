@@ -258,7 +258,7 @@
         "pCopyparty" = {
           id = "L62NXFW-4KGPXKW-XHT7VCQ-73CKJCE-D2EU666-SZW2YKC-W2UBSTW-3JZJ4QL";
         };
-                "Desktop" = {
+        "Desktop" = {
           id = "JJXJFPD-DPCLLWG-JCK5QAG-65UGLLO-PRKHRDY-BKOVMAS-HWMOMY7-AOU5NQK";
         };
         "syncthing-hetzner" = {
