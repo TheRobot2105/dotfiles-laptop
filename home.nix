@@ -50,7 +50,6 @@
       fira-code
       drawio
       vlc
-      pgadmin4-desktopmode
       screen
       nixpkgs-lint-community
       spice
@@ -67,6 +66,7 @@
       rclone-ui
       avrdudess
       mqttx
+      dbeaver-bin
 
       (python3.withPackages (
         ps: with ps; [
@@ -93,7 +93,7 @@
 
     ])
     ++ (with pkgs.nur.repos; [
-      therobot2105.vivado-2020_1
+      #therobot2105.vivado-2020_1
     ]);
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
