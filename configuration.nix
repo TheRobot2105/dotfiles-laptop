@@ -154,7 +154,7 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.firefox.nativeMessagingHosts.packages = [
-    #pkgs.jabref
+    pkgs.stablepkgs.jabref
   ];
 
   programs.kdeconnect.enable = true;
