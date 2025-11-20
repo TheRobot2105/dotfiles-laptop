@@ -154,13 +154,14 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.firefox.nativeMessagingHosts.packages = [
-    pkgs.jabref
+    #pkgs.jabref
   ];
 
   programs.kdeconnect.enable = true;
 
   # Allow unfree packages
   nixpkgs = {
+    hostPlatform = { system = "x86_64-linux";};
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
