@@ -60,7 +60,6 @@
       system = "x86_64-linux";
     in
     {
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
         modules = [
