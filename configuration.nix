@@ -63,6 +63,9 @@
   zramSwap.enable = true;
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.optimise ={
+    automatic = true;
+  };
 
   networking.hostName = "nixos-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
