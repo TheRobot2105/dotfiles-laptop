@@ -15,7 +15,6 @@
     ./disko-config.nix
     #./hyprland-system.nix
     ./cachix.nix
-    ./user-config/webdav.nix
   ];
 
   sops = {
@@ -63,7 +62,7 @@
   zramSwap.enable = true;
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-  nix.optimise ={
+  nix.optimise = {
     automatic = true;
   };
 
@@ -157,7 +156,7 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.firefox.nativeMessagingHosts.packages = [
-    pkgs.stablepkgs.jabref
+    pkgs.jabref
   ];
 
   programs.kdeconnect.enable = true;
@@ -267,7 +266,7 @@
           id = "JJXJFPD-DPCLLWG-JCK5QAG-65UGLLO-PRKHRDY-BKOVMAS-HWMOMY7-AOU5NQK";
         };
         "syncthing-hetzner" = {
-          id = "IASJQL5-BZWJAKW-D56RIAS-AL6J3D4-UVNZIBK-RUAARSB-PLG2XFY-FLYRRAN";
+          id = "BOWTHBY-MEXFJQT-AWPNLE2-JWYQWL4-EXRBGQX-2U2LYAC-YI4SBEJ-UMOZAA3";
         };
       };
     };

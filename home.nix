@@ -67,6 +67,8 @@
       mqttx
       dbeaver-bin
       prismlauncher
+      jabref
+      zoom-us
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -81,7 +83,6 @@
       # '')
     ]
     ++ (with pkgs.stablepkgs; [
-      jabref
     ])
     ++ (with pkgs.nur.repos; [
       #therobot2105.vivado-2020_1
