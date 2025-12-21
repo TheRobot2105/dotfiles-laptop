@@ -99,6 +99,8 @@
         "julia.symbolCacheDownload" = true;
         "julia.enableTelemetry" = false;
         "julia.environmentPath" = "\${workspaceFolder}";
+        "julia.executablePath" = "${pkgs.julia-bin}/bin/julia";
+        "julia.juliaup.install.hint" = false;
         "chat.disableAIFeatures" = true;
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
         "platformio-ide.useBuiltinPIOCore" = false;
