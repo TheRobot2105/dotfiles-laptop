@@ -57,7 +57,7 @@
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
+      
     in
     {
       nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
@@ -68,7 +68,7 @@
               inputs.nix-vscode-extensions.overlays.default
               (final: _prev: {
                 stablepkgs = import nixpkgs-stable {
-                  system = final.system;
+                  stdenv.hostPlatform.system = final.stdenv.hostPlatform.system;
                   config.allowUnfree = true;
                 };
               })

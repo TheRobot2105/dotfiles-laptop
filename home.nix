@@ -67,7 +67,7 @@
       mqttx
       dbeaver-bin
       prismlauncher
-      jabref
+      #jabref
       zoom-us
       cryptomator
       kicad
@@ -86,6 +86,7 @@
       # '')
     ]
     ++ (with pkgs.stablepkgs; [
+      #jabref
     ])
     ++ (with pkgs.nur.repos; [
       #therobot2105.vivado-2020_1
