@@ -72,6 +72,8 @@
       cryptomator
       kicad
       rpi-imager
+      jabref
+
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -141,6 +143,12 @@
       user.Email = "felix.kimmel@web.de";
       user.Name = "Felix Kimmel";
     };
+  };
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/felix/.dotfiles"; # sets NH_OS_FLAKE variable for you
   };
 
   home.shell.enableFishIntegration = true;
