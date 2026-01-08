@@ -42,7 +42,6 @@
       obsidian
       qbittorrent
       kdePackages.filelight
-      #jabref
       inkscape
       libation
       teamspeak6-client
@@ -51,7 +50,6 @@
       drawio
       vlc
       screen
-      nixpkgs-lint-community
       spice
       virt-viewer
       spice-gtk
@@ -59,21 +57,14 @@
       age
       shfmt
       julia-bin
-      nix-output-monitor
       heroic
-      nix-init
-      rclone-ui
-      avrdudess
       mqttx
       dbeaver-bin
       prismlauncher
-      #jabref
       zoom-us
       cryptomator
       kicad
-      rpi-imager
       jabref
-      fresh-editor
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
