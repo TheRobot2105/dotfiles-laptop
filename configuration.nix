@@ -13,13 +13,13 @@
   imports = [
     # Include the results of the hardware scan.
     #./hardware-configuration.nix
-    inputs.sops-nix.nixosModules.sops
+    #inputs.sops-nix.nixosModules.sops
     inputs.secrets.nixosModules.default
     ./disko-config.nix
     #./hyprland-system.nix
   ];
   secrets = {
-    username = "myuser"; # or `inherit username;`, assuming you have a username variable
+    username = "felix"; # or `inherit username;`, assuming you have a username variable
 
     # set up the system to use the system key
     enable = true;
