@@ -196,6 +196,7 @@
     nixfmt-tree
     yubioath-flutter
     syncthingtray
+    cachix
     (
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
@@ -295,6 +296,8 @@
 
   };
   programs.localsend.enable = true;
+
+  services.cachix-agent.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
