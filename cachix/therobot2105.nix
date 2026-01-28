@@ -5,7 +5,7 @@
         "https://therobot2105.cachix.org"
       ];
       trusted-public-keys = [
-        "therobot2105.cachix.org-1:c1OGueADKmCsAsfhDqM6IBCddFyb0grX5j/DGhaENtI="
+        "therobot2105.cachix.org-1:RX3o93UfxJFGbsvHxthPnVYAs2FnL7H6V7N9VUh4AnQ="
       ];
     };
   };
