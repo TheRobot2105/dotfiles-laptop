@@ -42,9 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    cachix-deploy-flake.url = "github:cachix/cachix-deploy-flake";
-
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -53,59 +50,49 @@
       nixpkgs,
       nixpkgs-stable,
       disko,
-      sops-nix,
       home-manager,
       plasma-manager,
       nix-vscode-extensions,
-      nixos-facter-modules,
-      cachix-deploy-flake,
       nur,
-      flake-utils,
       ...
     }@inputs:
-    flake-utils.lib.eachDefaultSystem (system: {
-      defaultPackage =
-        let
-          pkgs = import nixpkgs { inherit system; };
-          cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
-        in
-        cachix-deploy-lib.spec {
-          agents = {
-            nixos-laptop = cachix-deploy-lib.nixos {
-              specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
-              modules = [
-                {
-                  nixpkgs.overlays = [
-                    inputs.nix-vscode-extensions.overlays.default
-                    (final: _prev: {
-                      stablepkgs = import nixpkgs-stable {
-                        stdenv.hostPlatform.system = final.stdenv.hostPlatform.system;
-                        config.allowUnfree = true;
-                      };
-                    })
-                  ];
-                }
-                ./configuration.nix
+    let
 
-                nur.modules.nixos.default
+    in
+    {
+      nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
+        modules = [
+          {
+            nixpkgs.overlays = [
+              inputs.nix-vscode-extensions.overlays.default
+              (final: _prev: {
+                stablepkgs = import nixpkgs-stable {
+                  stdenv.hostPlatform.system = final.stdenv.hostPlatform.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+          ./configuration.nix
 
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager = {
-                    useUserPackages = true;
-                    backupFileExtension = "backup";
-                    useGlobalPkgs = true; # makes hm use nixos's pkgs value
-                    extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
-                    users.felix.imports = [ ./home.nix ];
-                    sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-                  };
-                }
-                disko.nixosModules.disko
-                inputs.nixos-facter-modules.nixosModules.facter
-                { config.facter.reportPath = ./facter.json; }
-              ];
+          nur.modules.nixos.default
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              useGlobalPkgs = true; # makes hm use nixos's pkgs value
+              extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
+              users.felix.imports = [ ./home.nix ];
+              sharedModules = [ plasma-manager.homeModules.plasma-manager ];
             };
-          };
-        };
-    });
+          }
+          disko.nixosModules.disko
+          inputs.nixos-facter-modules.nixosModules.facter
+          { config.facter.reportPath = ./facter.json; }
+        ];
+      };
+    };
 }
