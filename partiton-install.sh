@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -e
+set -e 
+set -o pipefail
 rm -rf /tmp/luks-password
 echo -n "Password für LUKS:"
 read -sr password
