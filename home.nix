@@ -150,6 +150,10 @@
       command = "tmux";
     };
   };
+  programs.nh = {
+    enable = true;
+    flake = "/home/felix/.dotfiles"; # sets NH_OS_FLAKE variable for you
+  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
