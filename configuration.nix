@@ -174,6 +174,7 @@
     sops
     git
     git-lfs
+    nh
 
   ];
   fonts.packages = with pkgs; [
