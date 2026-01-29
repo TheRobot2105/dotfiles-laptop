@@ -14,25 +14,10 @@
     # Include the results of the hardware scan.
     #./hardware-configuration.nix
     #inputs.sops-nix.nixosModules.sops
-    inputs.secrets.nixosModules.default
+    #inputs.secrets.nixosModules.default
     ./disko-config.nix
     #./hyprland-system.nix
   ];
-  secrets = {
-    username = "felix"; # or `inherit username;`, assuming you have a username variable
-
-    # set up the system to use the system key
-    enable = true;
-
-    # to set a token in nix configuration, probably don't need
-    # to enable.
-    enableGithubToken = false;
-
-    # maybe don't enable this right away until you've confirmed
-    # everything is working. this runs account passwords from secrets,
-    # to be used with `mutableUsers = false`
-    users.enable = false;
-  };
 
   #sops = {
   #  defaultSopsFile = ./secrets/secrets.yaml;

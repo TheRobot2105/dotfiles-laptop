@@ -14,15 +14,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    secrets = {
-      # you'll eventually want to push, but while integrating
-      # it's probably easiest to point to a local clone. But
-      # when you have one pushed, change to a github: url.
-      url = "path:/home/felix/Dokumente/secrets";
-      # url = "github:therobot2105/secrets";
-
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     #hyprland.url = "github:hyprwm/Hyprland";
 
     sops-nix = {
