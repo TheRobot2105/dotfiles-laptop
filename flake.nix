@@ -1,6 +1,15 @@
 {
   description = "My first flake!";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://therobot2105.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "therobot2105.cachix.org-1:RX3o93UfxJFGbsvHxthPnVYAs2FnL7H6V7N9VUh4AnQ="
+    ];
+  };
+
   inputs = {
 
     nixpkgs.url = "nixpkgs/nixos-unstable";

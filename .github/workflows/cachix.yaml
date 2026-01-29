@@ -1,6 +1,7 @@
 name: build and push to cachix
 on:
     workflow_dispatch:
+    push:
 jobs:
   build-machines:
     strategy:
