@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 rm -rf /tmp/luks-password
 echo -n "Password für LUKS:"
 read -sr password
