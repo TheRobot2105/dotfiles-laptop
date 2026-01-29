@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -e 
+set -o pipefail
 ssh_private=/etc/ssh/ssh_host_ed25519_key
 ssh_public=/etc/ssh/ssh_host_ed25519_key.pub
 dotfiles_dir=/home/felix/.dotfiles
