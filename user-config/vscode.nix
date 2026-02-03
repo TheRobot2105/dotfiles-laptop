@@ -37,6 +37,7 @@
         tboby.cwtools-vscode
         platformio.platformio-ide
         ms-vscode.cpptools
+        nefrob.vscode-just-syntax
       ];
       userSettings = {
         "extensions.autoUpdate" = false;
