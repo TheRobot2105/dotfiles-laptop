@@ -10,34 +10,34 @@
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
-      extensions = with pkgs.vscode-marketplace; [
+      extensions = pkgs.nix4vscode.forVscode [
         # * https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
-        jnoortheen.nix-ide
-        ltex-plus.vscode-ltex-plus
-        james-yu.latex-workshop
+        "jnoortheen.nix-ide"
+        "ltex-plus.vscode-ltex-plus"
+        "james-yu.latex-workshop"
         #hirse.vscode-ungit
-        github.vscode-github-actions
+        "github.vscode-github-actions"
         #hiukky.flate
         #github.codespaces
-        johnpapa.winteriscoming
-        myriad-dreamin.tinymist
+        "johnpapa.winteriscoming"
+        "myriad-dreamin.tinymist"
         #catppuccin.catppuccin-vsc-icons
-        pkief.material-icon-theme
+        "pkief.material-icon-theme"
         #eamodio.gitlens
-        mads-hartmann.bash-ide-vscode
-        timonwong.shellcheck
-        mkhl.shfmt
-        editorconfig.editorconfig
-        aaron-bond.better-comments
-        natqe.reload
-        julialang.language-julia
-        ms-vscode-remote.remote-ssh
-        coolbear.systemd-unit-file
-        tamasfe.even-better-toml
-        tboby.cwtools-vscode
-        platformio.platformio-ide
-        ms-vscode.cpptools
-        nefrob.vscode-just-syntax
+        "mads-hartmann.bash-ide-vscode"
+        "timonwong.shellcheck"
+        "mkhl.shfmt"
+        "editorconfig.editorconfig"
+        "aaron-bond.better-comments"
+        "natqe.reload"
+        "julialang.language-julia"
+        "ms-vscode-remote.remote-ssh"
+        "coolbear.systemd-unit-file"
+        "tamasfe.even-better-toml"
+        "tboby.cwtools-vscode"
+        "platformio.platformio-ide"
+        "ms-vscode.cpptools"
+        "nefrob.vscode-just-syntax"
       ];
       userSettings = {
         "extensions.autoUpdate" = false;

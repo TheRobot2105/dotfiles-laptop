@@ -50,6 +50,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix4vscode = {
+      url = "github:nix-community/nix4vscode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -62,6 +66,7 @@
       home-manager,
       plasma-manager,
       nix-vscode-extensions,
+      nix4vscode,
       nur,
       ...
     }@inputs:
@@ -75,6 +80,7 @@
           {
             nixpkgs.overlays = [
               inputs.nix-vscode-extensions.overlays.default
+              nix4vscode.overlays.default
               (final: _prev: {
                 stablepkgs = import nixpkgs-stable {
                   stdenv.hostPlatform.system = final.stdenv.hostPlatform.system;
