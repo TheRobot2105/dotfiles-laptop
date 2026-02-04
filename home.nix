@@ -44,7 +44,6 @@
       kdePackages.filelight
       inkscape
       libation
-      teamspeak6-client
       fastfetch
       fira-code
       drawio
@@ -58,12 +57,10 @@
       shfmt
       julia-bin
       heroic
-      mqttx
       dbeaver-bin
       prismlauncher
       zoom-us
       cryptomator
-      kicad
       jabref
       openscad-unstable
       just

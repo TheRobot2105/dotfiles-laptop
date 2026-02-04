@@ -63,9 +63,6 @@
   zramSwap.enable = true;
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-  nix.optimise = {
-    automatic = true;
-  };
 
   networking.hostName = "nixos-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -231,10 +228,6 @@
     fira-code
     liberation_ttf
   ];
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -243,11 +236,6 @@
   #   enableSSHSupport = true;
   # };
   services.power-profiles-daemon.enable = true;
-
-  services.udev.packages = with pkgs; [
-    platformio-core.udev
-    openocd
-  ];
 
   services.syncthing = {
     enable = true;
