@@ -134,6 +134,7 @@
       commit.gpgsign = false;
       user.Email = "felix.kimmel@web.de";
       user.Name = "Felix Kimmel";
+      push.autoSetupRemote = true;
     };
   };
   programs.nh = {
