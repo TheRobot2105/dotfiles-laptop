@@ -55,59 +55,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    import-tree.url = "github:vic/import-tree";
+
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nixpkgs-stable,
-      disko,
-      home-manager,
-      plasma-manager,
-      nix-vscode-extensions,
-      nix4vscode,
-      nur,
-      ...
-    }@inputs:
-    let
-
-    in
-    {
-      nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
-        modules = [
-          {
-            nixpkgs.overlays = [
-              inputs.nix-vscode-extensions.overlays.default
-              nix4vscode.overlays.default
-              (final: _prev: {
-                stablepkgs = import nixpkgs-stable {
-                  stdenv.hostPlatform.system = final.stdenv.hostPlatform.system;
-                  config.allowUnfree = true;
-                };
-              })
-            ];
-          }
-          ./configuration.nix
-
-          nur.modules.nixos.default
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              useGlobalPkgs = true; # makes hm use nixos's pkgs value
-              extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
-              users.felix.imports = [ ./home.nix ];
-              sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-            };
-          }
-          disko.nixosModules.disko
-          inputs.nixos-facter-modules.nixosModules.facter
-          { config.facter.reportPath = ./facter.json; }
-        ];
-      };
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
