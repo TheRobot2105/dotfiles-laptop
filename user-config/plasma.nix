@@ -14,7 +14,7 @@
             floating = false;
             widgets = [
               {
-                name = "org.kde.plasma.kicker"; # or "org.kde.plasma.kickoff"
+                name = "org.kde.plasma.kickoff"; # or "org.kde.plasma.kicker"
                 config = {
                   General = {
                     icon = "nix-snowflake-white";
