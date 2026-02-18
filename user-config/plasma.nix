@@ -61,11 +61,11 @@
                     "KGpg"
                     "Wallet Manager"
                     "org.kde.plasma.keyboardlayout"
+                    "org.kde.plasma.bluetooth"
                   ];
                   shown = [
                     "martchus.syncthingplasmoid"
                     "org.kde.plasma.clipboard"
-                    "org.kde.plasma.bluetooth"
                     "org.kde.plasma.volume"
                     "org.kde.plasma.brightness"
                     "org.kde.plasma.battery"
