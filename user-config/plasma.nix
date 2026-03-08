@@ -11,7 +11,7 @@
             location = "bottom";
             hiding = "none";
             height = 44;
-            floating = false;
+            floating = true;
             widgets = [
               {
                 name = "org.kde.plasma.kickoff"; # or "org.kde.plasma.kicker"
