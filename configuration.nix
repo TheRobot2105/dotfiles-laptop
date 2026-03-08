@@ -181,8 +181,8 @@
     git-crypt
     git-lfs
     filezilla
-    python312
-    python312Packages.pygments
+    python3
+    python3Packages.pygments
     btop-rocm
     kdePackages.partitionmanager
     exfat
