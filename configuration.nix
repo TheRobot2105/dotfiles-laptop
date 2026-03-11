@@ -15,7 +15,7 @@
     ./disko-config.nix
     #./hyprland-system.nix
     ./cachix.nix
-    ./user-config/plasma-fix.nix
+    #./user-config/plasma-fix.nix
   ];
 
   sops = {
