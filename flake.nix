@@ -54,6 +54,10 @@
       url = "github:nix-community/nix4vscode";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -68,6 +72,7 @@
       nix-vscode-extensions,
       nix4vscode,
       nur,
+      nix-index-database,
       ...
     }@inputs:
     let
@@ -90,6 +95,8 @@
             ];
           }
           ./configuration.nix
+
+          nix-index-database.nixosModules.default
 
           nur.modules.nixos.default
 

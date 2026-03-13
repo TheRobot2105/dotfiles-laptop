@@ -283,6 +283,7 @@
 
   };
   programs.localsend.enable = true;
+  programs.nix-index-database.comma.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
