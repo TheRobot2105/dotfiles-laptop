@@ -111,6 +111,7 @@
           rightClickMethod = "twoFingers";
           scrollMethod = "twoFingers";
           vendorId = "044e";
+          disableWhileTyping = false;
         }
       ];
     };
