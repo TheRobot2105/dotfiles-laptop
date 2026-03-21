@@ -42,7 +42,7 @@ jobs:
           persist-credentials: false
 
       # this is what uploads our builds to the cache (also makes our CI use the cache from previous runs)!
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: therobot2105 # replace with the name of your cachix cache
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
