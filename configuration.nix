@@ -15,6 +15,7 @@
     ./disko-config.nix
     #./hyprland-system.nix
     ./cachix.nix
+    ./nixld.nix
     #./user-config/plasma-fix.nix
   ];
 
