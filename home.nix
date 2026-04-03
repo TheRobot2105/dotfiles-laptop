@@ -138,6 +138,7 @@
       user.Name = "Felix Kimmel";
       push.autoSetupRemote = true;
     };
+    signing.format = null;
   };
   programs.nh = {
     enable = true;
