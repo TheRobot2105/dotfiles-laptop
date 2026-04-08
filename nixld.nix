@@ -60,10 +60,10 @@
       libxinerama
       libxcursor
       libxrender
-      libxScrnSaver
+      libXScrnSaver
       libxi
-      xorg.libSM
-      xorg.libICE
+      libSM
+      libICE
       gnome2.GConf
       nspr
       nss
