@@ -6,11 +6,6 @@
 {
 
   programs.plasma = {
-    #TODO: remove when https://github.com/nix-community/plasma-manager/issues/577 is closed
-    startup.desktopScript."panels".preCommands = lib.mkForce ''
-      sleep 3
-      [ -f ${config.xdg.configHome}/plasma-org.kde.plasma.desktop-appletsrc ] && rm ${config.xdg.configHome}/plasma-org.kde.plasma.desktop-appletsrc        
-    '';
     panels = [
       {
         location = "bottom";

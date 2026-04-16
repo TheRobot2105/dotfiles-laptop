@@ -150,6 +150,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "dialout"
     ];
   };
   # Install firefox.
