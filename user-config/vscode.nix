@@ -38,6 +38,7 @@
         "platformio.platformio-ide"
         "ms-vscode.cpptools"
         "nefrob.vscode-just-syntax"
+        "redhat.vscode-yaml"
       ];
       userSettings = {
         "explorer.confirmDragAndDrop" = false;
