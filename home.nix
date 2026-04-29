@@ -33,7 +33,7 @@
     with pkgs;
     [
       thunderbird
-      discord-ptb
+      #discord-ptb
       ltex-ls-plus
       qalculate-qt
       gcr
@@ -66,7 +66,6 @@
       just
       just-lsp
       teamspeak6-client
-      bottles
       nodejs
       rendercv
       # # It is sometimes useful to fine-tune packages, for example, by applying
