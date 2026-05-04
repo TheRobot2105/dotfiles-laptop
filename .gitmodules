@@ -1,3 +1,6 @@
 [submodule "wallpaper"]
 	path = wallpaper
 	url = git@github.com:TheRobot2105/wallpaper.git
+[submodule "nvim-config"]
+	path = nvim-config
+	url = git@github.com:TheRobot2105/nvim-config.git
