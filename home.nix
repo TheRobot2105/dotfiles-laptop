@@ -7,6 +7,7 @@
     ./user-config/vscode.nix
     ./user-config/plasma.nix
     ./user-config/tmux.nix
+    ./user-config/neovim.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
