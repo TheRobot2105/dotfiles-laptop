@@ -180,7 +180,6 @@
     nixd
     texlive.combined.scheme-full
     git
-    git-crypt
     git-lfs
     filezilla
     python3

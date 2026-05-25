@@ -33,10 +33,8 @@
     with pkgs;
     [
       thunderbird
-      #discord-ptb
       ltex-ls-plus
       qalculate-qt
-      gcr
       spotify
       libreoffice
       obsidian
@@ -48,10 +46,6 @@
       fira-code
       drawio
       vlc
-      screen
-      spice
-      virt-viewer
-      spice-gtk
       bitwarden-desktop
       age
       shfmt
