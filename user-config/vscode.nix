@@ -25,7 +25,7 @@
         "pkief.material-icon-theme"
         #eamodio.gitlens
         "mads-hartmann.bash-ide-vscode"
-        "timonwong.shellcheck"
+        #"timonwong.shellcheck"
         "mkhl.shfmt"
         "editorconfig.editorconfig"
         "aaron-bond.better-comments"
