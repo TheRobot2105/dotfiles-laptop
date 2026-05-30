@@ -58,6 +58,10 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -73,6 +77,7 @@
       nix4vscode,
       nur,
       nix-index-database,
+      zen-browser,
       ...
     }@inputs:
     let
