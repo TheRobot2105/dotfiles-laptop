@@ -308,5 +308,6 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.trusted-users = [ "@wheel" ];
   home-manager.backupFileExtension = "backup";
 }

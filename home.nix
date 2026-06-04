@@ -47,7 +47,7 @@
       fira-code
       drawio
       vlc
-      bitwarden-desktop
+      #bitwarden-desktop
       age
       shfmt
       julia-bin
