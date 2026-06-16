@@ -62,6 +62,10 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -78,6 +82,7 @@
       nur,
       nix-index-database,
       zen-browser,
+      lanzaboote,
       ...
     }@inputs:
     let
@@ -101,6 +106,8 @@
           }
           ./configuration.nix
 
+          lanzaboote.nixosModules.lanzaboote
+
           nix-index-database.nixosModules.default
 
           nur.modules.nixos.default
@@ -119,6 +126,7 @@
           disko.nixosModules.disko
           inputs.nixos-facter-modules.nixosModules.facter
           { config.facter.reportPath = ./facter.json; }
+
         ];
       };
     };

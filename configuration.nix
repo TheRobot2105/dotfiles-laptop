@@ -54,11 +54,22 @@
 
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.systemd-boot.enable = true;
+  #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth = {
     enable = true;
     theme = "breeze";
+  };
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+    autoGenerateKeys.enable = true;
+    autoEnrollKeys = {
+      enable = true;
+      autoReboot = true;
+    };
   };
 
   zramSwap.enable = true;
@@ -194,6 +205,7 @@
     nixfmt-tree
     yubioath-flutter
     syncthingtray
+    sbctl
     #(
     #  let
     #    base = pkgs.appimageTools.defaultFhsEnvArgs;
