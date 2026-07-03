@@ -47,7 +47,7 @@
       fira-code
       drawio
       vlc
-      #bitwarden-desktop
+      #bitwarden-desktop deactivated because of upstream EOL electron
       age
       shfmt
       julia-bin
@@ -66,6 +66,8 @@
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       radiotray-ng
       rapid-photo-downloader
+      jj
+      discord
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of

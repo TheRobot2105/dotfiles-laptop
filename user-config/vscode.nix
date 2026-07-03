@@ -39,10 +39,11 @@
         "ms-vscode.cpptools"
         "nefrob.vscode-just-syntax"
         "redhat.vscode-yaml"
+        "jjk.jjk"
       ];
       userSettings = {
         "explorer.confirmDragAndDrop" = false;
-        "extensions.autoUpdate" = false;
+        "extensions.autoUpdate" = "off";
         "chat.commandCenter.enabled" = false;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
