@@ -56,12 +56,32 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth = {
-    enable = true;
-    theme = "breeze";
+  boot = {
+    plymouth = {
+      enable = true;
+      theme = "green_blocks";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "green_blocks" ];
+        })
+      ];
+    };
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "rd.udev.log_level=3"
+      "rd.systemd.show_status=auto"
+    ];
+
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+
   };
   boot.loader.systemd-boot.enable = lib.mkForce false;
-
+  boot.loader.timeout = 0;
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";

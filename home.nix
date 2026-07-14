@@ -193,10 +193,6 @@
 
   programs.konsole = {
     enable = true;
-    defaultProfile = "fish";
-    profiles.fish = {
-      command = "tmux";
-    };
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -40,6 +40,7 @@
         "nefrob.vscode-just-syntax"
         "redhat.vscode-yaml"
         "jjk.jjk"
+        "ms-azuretools.vscode-containers"
       ];
       userSettings = {
         "explorer.confirmDragAndDrop" = false;
