@@ -107,6 +107,14 @@
         "chat.disableAIFeatures" = true;
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
         "platformio-ide.useBuiltinPIOCore" = false;
+        "yaml.disableSchemaDetection" = [
+          "**/.github/workflows/*.yml"
+          "**/.github/workflows/*.yaml"
+          "**/.gitea/workflows/*.yml"
+          "**/.gitea/workflows/*.yaml"
+          "**/.forgejo/workflows/*.yml"
+          "**/.forgejo/workflows/*.yaml"
+        ];
       };
     };
   };

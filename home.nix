@@ -57,7 +57,7 @@
       zoom-us
       cryptomator
       jabref
-      openscad-unstable
+      #openscad-unstable
       just
       just-lsp
       teamspeak6-client
@@ -68,6 +68,7 @@
       rapid-photo-downloader
       jj
       discord
+      #tail-tray
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -83,6 +84,7 @@
     ]
     ++ (with pkgs.stablepkgs; [
       #jabref
+      #openscad-unstable
     ])
     ++ (with pkgs.nur.repos; [
       #therobot2105.vivado-2020_1

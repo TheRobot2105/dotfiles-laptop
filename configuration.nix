@@ -281,9 +281,6 @@
     overrideFolders = false;
     settings = {
       devices = {
-        "pCopyparty" = {
-          id = "L62NXFW-4KGPXKW-XHT7VCQ-73CKJCE-D2EU666-SZW2YKC-W2UBSTW-3JZJ4QL";
-        };
         "Desktop" = {
           id = "JJXJFPD-DPCLLWG-JCK5QAG-65UGLLO-PRKHRDY-BKOVMAS-HWMOMY7-AOU5NQK";
         };
@@ -319,6 +316,15 @@
   programs.nix-index-database.comma.enable = true;
   # List services that you want to enable:
 
+  #services.tailscale = {
+  #  # Enable tailscale at startup
+  #  enable = true;
+#
+  #  # If you would like to use a preauthorized key, set
+  #  # authKeyFile = "/run/secrets/tailscale_key";
+  #  # Note: maximum expire time is 90 days
+  #};
+
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
 
@@ -334,7 +340,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 
   nix.settings.experimental-features = [
     "nix-command"
