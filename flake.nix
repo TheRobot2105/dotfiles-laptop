@@ -66,6 +66,9 @@
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
 
   };
 
@@ -83,6 +86,7 @@
       nix-index-database,
       zen-browser,
       lanzaboote,
+      nix-flatpak,
       ...
     }@inputs:
     let
@@ -126,7 +130,7 @@
           disko.nixosModules.disko
           inputs.nixos-facter-modules.nixosModules.facter
           { config.facter.reportPath = ./facter.json; }
-
+          nix-flatpak.nixosModules.nix-flatpak
         ];
       };
     };

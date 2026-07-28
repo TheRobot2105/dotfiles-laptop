@@ -319,12 +319,17 @@
   #services.tailscale = {
   #  # Enable tailscale at startup
   #  enable = true;
-#
+  #
   #  # If you would like to use a preauthorized key, set
   #  # authKeyFile = "/run/secrets/tailscale_key";
   #  # Note: maximum expire time is 90 days
   #};
-
+  services.flatpak ={
+    enable = true;
+    packages =[
+      "org.sabnzbd.sabnzbd"
+    ];
+  };
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
 
