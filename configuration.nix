@@ -182,6 +182,7 @@
       "networkmanager"
       "wheel"
       "dialout"
+      "docker"
     ];
   };
   # Install firefox.
@@ -298,6 +299,10 @@
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = [ "felix" ];
   virtualisation = {
+    docker ={
+      enable = true;
+      storageDriver = "btrfs";
+    };
     libvirtd = {
       enable = true;
       qemu.swtpm.enable = true;
