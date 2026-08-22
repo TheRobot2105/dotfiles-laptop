@@ -16,6 +16,7 @@
     #./hyprland-system.nix
     ./cachix.nix
     ./nixld.nix
+    ./user-config/miracast.nix
     #./user-config/plasma-fix.nix
   ];
 
