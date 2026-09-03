@@ -45,28 +45,27 @@
       libation
       fastfetch
       fira-code
-      drawio
+      #drawio
       vlc
-      #bitwarden-desktop deactivated because of upstream EOL electron
+      bitwarden-desktop #deactivated because of upstream EOL electron
       age
       shfmt
       julia-bin
       heroic
       dbeaver-bin
       prismlauncher
-      zoom-us
-      cryptomator
+      #zoom-us
+      #cryptomator
       jabref
       #openscad-unstable
       just
       just-lsp
-      teamspeak6-client
-      nodejs
-      rendercv
+      #teamspeak6-client
+      #nodejs
+      #rendercv
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-      radiotray-ng
-      rapid-photo-downloader
-      jj
+      #radiotray-ng
+      #rapid-photo-downloader
       discord
       sonarr
       radarr
