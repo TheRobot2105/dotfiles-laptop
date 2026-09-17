@@ -106,6 +106,9 @@
                   config.allowUnfree = true;
                 };
               })
+              (final: prev: {
+                buildGo125Module = prev.buildGoModule;
+              })
             ];
           }
           ./configuration.nix

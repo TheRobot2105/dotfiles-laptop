@@ -299,7 +299,7 @@
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = [ "felix" ];
   virtualisation = {
-    docker ={
+    docker = {
       enable = true;
       storageDriver = "btrfs";
     };
@@ -329,9 +329,9 @@
   #  # authKeyFile = "/run/secrets/tailscale_key";
   #  # Note: maximum expire time is 90 days
   #};
-  services.flatpak ={
+  services.flatpak = {
     enable = true;
-    packages =[
+    packages = [
       "org.sabnzbd.sabnzbd"
     ];
   };

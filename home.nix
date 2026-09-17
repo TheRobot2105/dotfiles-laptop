@@ -47,7 +47,7 @@
       fira-code
       #drawio
       vlc
-      bitwarden-desktop #deactivated because of upstream EOL electron
+      bitwarden-desktop # deactivated because of upstream EOL electron
       age
       shfmt
       julia-bin
@@ -69,7 +69,7 @@
       discord
       sonarr
       radarr
-      #tail-tray
+      devenv
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
