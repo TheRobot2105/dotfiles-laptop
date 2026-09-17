@@ -41,6 +41,10 @@
         "redhat.vscode-yaml"
         "jjk.jjk"
         "ms-azuretools.vscode-containers"
+        "ms-python.python"
+        "ms-python.vscode-pylance"
+        "ms-python.debugpy"
+        "ms-python.vscode-python-envs"
       ];
       userSettings = {
         "explorer.confirmDragAndDrop" = false;

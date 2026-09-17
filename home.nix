@@ -37,7 +37,7 @@
       ltex-ls-plus
       qalculate-qt
       spotify
-      libreoffice
+      #libreoffice
       obsidian
       qbittorrent
       kdePackages.filelight
@@ -53,10 +53,10 @@
       julia-bin
       heroic
       dbeaver-bin
-      prismlauncher
+      #prismlauncher
       #zoom-us
       #cryptomator
-      jabref
+      #jabref
       #openscad-unstable
       just
       just-lsp
