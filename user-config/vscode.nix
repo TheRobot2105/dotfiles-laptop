@@ -45,7 +45,6 @@
         "ms-python.vscode-pylance"
         "ms-python.debugpy"
         "ms-python.vscode-python-envs"
-        "datakurre.devenv"
       ];
       userSettings = {
         "explorer.confirmDragAndDrop" = false;
