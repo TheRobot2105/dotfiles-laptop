@@ -227,6 +227,7 @@
     yubioath-flutter
     syncthingtray
     sbctl
+    inputs.juliaup-nix.packages.${pkgs.stdenv.hostPlatform.system}.juliaup
     (
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;

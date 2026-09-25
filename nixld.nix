@@ -17,6 +17,7 @@
       zlib
       zstd
       stdenv.cc.cc
+      stdenv.cc.cc.lib
       curl
       openssl
       attr
@@ -28,6 +29,7 @@
       util-linux
       xz
       systemd
+      libssh2
 
       # My own additions
       libxcomposite

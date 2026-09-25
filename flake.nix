@@ -69,6 +69,10 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak";
     };
+    juliaup-nix = {
+      url = "github:s-celles/juliaup-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -87,6 +91,7 @@
       zen-browser,
       lanzaboote,
       nix-flatpak,
+      juliaup-nix,
       ...
     }@inputs:
     let

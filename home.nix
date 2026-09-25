@@ -50,7 +50,6 @@
       bitwarden-desktop # deactivated because of upstream EOL electron
       age
       shfmt
-      julia-bin
       heroic
       dbeaver-bin
       #prismlauncher
