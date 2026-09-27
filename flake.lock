@@ -320,6 +320,26 @@
         "type": "github"
       }
     },
+    "omnibin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790474375,
+        "narHash": "sha256-Yw+dBgibUzBMpcCS/qw+IYmeBSl/3I4o3bXny0pOxdY=",
+        "owner": "fzakaria",
+        "repo": "omnibin",
+        "rev": "62ca1170fec8d738d2c2ca61dc76a8f3db1941ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fzakaria",
+        "repo": "omnibin",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -380,6 +400,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
+        "omnibin": "omnibin",
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
         "zen-browser": "zen-browser"

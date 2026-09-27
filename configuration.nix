@@ -336,6 +336,7 @@
       "org.sabnzbd.sabnzbd"
     ];
   };
+  services.omnibin.enable = false; # Hängt sich auf bei aktivieriung warten bis es neue Version gibt
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
 

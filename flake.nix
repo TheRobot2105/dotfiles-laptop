@@ -16,8 +16,10 @@
 
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -73,6 +75,10 @@
       url = "github:s-celles/juliaup-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    omnibin = {
+      url = "github:fzakaria/omnibin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -92,6 +98,7 @@
       lanzaboote,
       nix-flatpak,
       juliaup-nix,
+      omnibin,
       ...
     }@inputs:
     let
@@ -139,6 +146,7 @@
           inputs.nixos-facter-modules.nixosModules.facter
           { config.facter.reportPath = ./facter.json; }
           nix-flatpak.nixosModules.nix-flatpak
+          inputs.omnibin.nixosModules.default
         ];
       };
     };
