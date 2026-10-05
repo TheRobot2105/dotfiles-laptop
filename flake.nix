@@ -146,7 +146,6 @@
           inputs.nixos-facter-modules.nixosModules.facter
           { config.facter.reportPath = ./facter.json; }
           nix-flatpak.nixosModules.nix-flatpak
-          inputs.omnibin.nixosModules.default
         ];
       };
     };

@@ -45,6 +45,7 @@
         "ms-python.vscode-pylance"
         "ms-python.debugpy"
         "ms-python.vscode-python-envs"
+        "naumovs.color-highlight"
       ];
       userSettings = {
         "explorer.confirmDragAndDrop" = false;
@@ -119,6 +120,8 @@
           "**/.forgejo/workflows/*.yml"
           "**/.forgejo/workflows/*.yaml"
         ];
+        "python.analysis.typeCheckingMode"= "standard";
+        "color-highlight.markerType"= "dot-after";
       };
     };
   };

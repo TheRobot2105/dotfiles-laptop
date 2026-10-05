@@ -12,6 +12,7 @@
 
   imports = [
     inputs.sops-nix.nixosModules.sops
+    inputs.omnibin.nixosModules.default
     ./disko-config.nix
     #./hyprland-system.nix
     ./cachix.nix
@@ -59,11 +60,11 @@
   boot = {
     plymouth = {
       enable = true;
-      theme = "green_blocks";
+      theme = "deus_ex";
       themePackages = with pkgs; [
         # By default we would install all themes
         (adi1090x-plymouth-themes.override {
-          selected_themes = [ "green_blocks" ];
+          selected_themes = [ "deus_ex" ];
         })
       ];
     };
@@ -94,7 +95,7 @@
 
   zramSwap.enable = true;
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.settings.nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   networking.hostName = "nixos-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
