@@ -18,6 +18,7 @@
     ./cachix.nix
     ./nixld.nix
     #./user-config/plasma-fix.nix
+    ./user-config/android-dev.nix
   ];
 
   sops = {
@@ -95,7 +96,7 @@
 
   zramSwap.enable = true;
 
-  nix.settings.nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   networking.hostName = "nixos-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

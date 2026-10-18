@@ -56,7 +56,7 @@
       #zoom-us
       #cryptomator
       #jabref
-      #openscad-unstable
+      openscad-unstable
       just
       just-lsp
       #teamspeak6-client

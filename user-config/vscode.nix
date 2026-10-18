@@ -120,8 +120,8 @@
           "**/.forgejo/workflows/*.yml"
           "**/.forgejo/workflows/*.yaml"
         ];
-        "python.analysis.typeCheckingMode"= "standard";
-        "color-highlight.markerType"= "dot-after";
+        "python.analysis.typeCheckingMode" = "standard";
+        "color-highlight.markerType" = "dot-after";
       };
     };
   };
