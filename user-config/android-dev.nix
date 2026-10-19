@@ -8,10 +8,8 @@
   environment.systemPackages = with pkgs; [
     android-studio
     jdk17 # To be able to export JAVA_HOME, if not using android-studio-full
+    android-tools
   ];
-
-  # Enable ADB
-  programs.adb.enable = true;
 
   # Add your user to necessary groups
   users.users.felix.extraGroups = [
