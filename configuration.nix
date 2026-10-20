@@ -341,7 +341,14 @@
   services.omnibin.enable = false; # Hängt sich auf bei aktivieriung warten bis es neue Version gibt
   # Enable the OpenSSH daemon.
   #services.openssh.enable = true;
-
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+  programs.appimage.package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [
+      pkgs.libpng
+      pkgs.webkitgtk_4_1
+    ];
+  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

@@ -60,10 +60,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -94,7 +90,6 @@
       nix4vscode,
       nur,
       nix-index-database,
-      zen-browser,
       lanzaboote,
       nix-flatpak,
       juliaup-nix,

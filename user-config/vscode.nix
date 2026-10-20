@@ -34,7 +34,7 @@
         "ms-vscode-remote.remote-ssh"
         "coolbear.systemd-unit-file"
         "tamasfe.even-better-toml"
-        "tboby.cwtools-vscode"
+        #"tboby.cwtools-vscode"
         "platformio.platformio-ide"
         "ms-vscode.cpptools"
         "nefrob.vscode-just-syntax"
@@ -46,6 +46,8 @@
         "ms-python.debugpy"
         "ms-python.vscode-python-envs"
         "naumovs.color-highlight"
+        "ms-toolsai.jupyter"
+        "bernhard-42.ocp-cad-viewer"
       ];
       userSettings = {
         "explorer.confirmDragAndDrop" = false;
