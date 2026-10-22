@@ -124,6 +124,7 @@
         ];
         "python.analysis.typeCheckingMode" = "standard";
         "color-highlight.markerType" = "dot-after";
+        "python-envs.terminal.autoActivationType" = "shellStartup";
       };
     };
   };
