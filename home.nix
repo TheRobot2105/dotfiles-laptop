@@ -143,13 +143,6 @@
       bold_italic_font = "auto";
     };
   };
-  programs.konsole = {
-    enable = true;
-    defaultProfile = "fish";
-    profiles.fish = {
-      command = "tmux";
-    };
-  };
   programs.nh = {
     enable = true;
     flake = "/home/felix/.dotfiles"; # sets NH_OS_FLAKE variable for you
