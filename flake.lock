@@ -403,7 +403,7 @@
         "omnibin": "omnibin",
         "plasma-manager": "plasma-manager",
         "sops-nix": "sops-nix",
-        "wallpapers": "wallpapers"
+        "wallpaper": "wallpaper"
       }
     },
     "rust-overlay": {
@@ -478,7 +478,7 @@
         "type": "github"
       }
     },
-    "wallpapers": {
+    "wallpaper": {
       "flake": false,
       "locked": {
         "lastModified": 1783102027,

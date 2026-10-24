@@ -75,7 +75,7 @@
       url = "github:fzakaria/omnibin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wallpapers = {
+    wallpaper = {
       type = "git";
       url = "ssh://git@github.com/therobot2105/wallpaper";
       lfs = true;
