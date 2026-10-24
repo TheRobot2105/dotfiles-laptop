@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   config,
   ...
@@ -91,7 +92,7 @@
     configFile.kcminputrc.Keyboard.NumLock.value = 0;
     workspace = {
       wallpaperSlideShow = {
-        path = [ "/home/felix/.dotfiles/wallpaper/wallpaper" ];
+        path = [ "${inputs.wallpaper}/wallpaper" ];
         interval = 600;
       };
       lookAndFeel = "org.kde.breezedark.desktop";
@@ -116,7 +117,7 @@
     kscreenlocker = {
       appearance = {
         wallpaperSlideShow = {
-          path = [ "/home/felix/.dotfiles/wallpaper/wallpaper" ];
+          path = [ "${inputs.wallpaper}/wallpaper" ];
           interval = 600;
         };
         alwaysShowClock = true;
