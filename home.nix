@@ -8,6 +8,7 @@
     ./user-config/vscode.nix
     ./user-config/plasma.nix
     ./user-config/tmux.nix
+    ./user-config/nvim.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -127,7 +128,6 @@
   #  /etc/profiles/per-user/felix/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nano";
     TERMINAL = "kitty";
     TERM = "screen-256color";
   };

@@ -19,6 +19,7 @@
     ./nixld.nix
     #./user-config/plasma-fix.nix
     ./user-config/android-dev.nix
+    ./user-config/networking.nix
   ];
 
   sops = {
@@ -50,6 +51,8 @@
       syncthing-cert = {
       };
       syncthing-key = {
+      };
+      wifi-password-home = {
       };
     };
   };
@@ -111,6 +114,37 @@
       networkmanager-openconnect
       networkmanager-openvpn
     ];
+    ensureProfiles = {
+      profiles = {
+        "Home-WiFi" = {
+          connection = {
+            id = "Home-WiFi";
+            type = "wifi";
+            autoconnect = "true";
+          };
+          wifi = {
+            ssid = "Mühle";
+            mode = "infrastructure";
+          };
+          "wifi-security" = {
+            key-mgmt = "wpa-psk";
+            psk-flags = 1; # Signalisiert NM, dass ein Secret-Agent das Passwort liefert
+          };
+        };
+      };
+
+      # Hier greift der nm-file-secret-agent auf die sops-nix Datei zu
+      secrets.entries = [
+        {
+          file = config.sops.secrets.wifi-password-home.path; # Dynamischer sops-Pfad (/run/secrets/...)
+          key = "psk";
+          matchId = "Home-WiFi";
+          matchSetting = "wifi-security";
+          matchType = "wifi";
+        }
+      ];
+
+    };
   };
   #networking.wireless.enable = lib.mkDefault false;
 
@@ -298,6 +332,7 @@
 
   services.fwupd.enable = true;
 
+  services.node-red.enable = false;
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = [ "felix" ];
   virtualisation = {
@@ -323,14 +358,14 @@
   programs.nix-index-database.comma.enable = true;
   # List services that you want to enable:
 
-  #services.tailscale = {
-  #  # Enable tailscale at startup
-  #  enable = true;
-  #
-  #  # If you would like to use a preauthorized key, set
-  #  # authKeyFile = "/run/secrets/tailscale_key";
-  #  # Note: maximum expire time is 90 days
-  #};
+  services.tailscale = {
+    # Enable tailscale at startup
+    enable = true;
+
+    # If you would like to use a preauthorized key, set
+    # authKeyFile = "/run/secrets/tailscale_key";
+    # Note: maximum expire time is 90 days
+  };
   services.flatpak = {
     enable = true;
     packages = [
