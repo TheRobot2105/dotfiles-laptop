@@ -93,6 +93,7 @@
     autoEnrollKeys = {
       enable = true;
       autoReboot = true;
+      includeFirmwareBuiltinKeys = true;
     };
   };
 
