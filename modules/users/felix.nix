@@ -19,6 +19,18 @@ in
         ];
       };
 
+      # SSH-Schlüssel von felix (Name in secrets.yaml: ssh-*-key-laptop)
+      sops.secrets = {
+        ssh-private-key-laptop = {
+          path = "/home/felix/.ssh/id_ed25519";
+          owner = config.users.users.felix.name;
+        };
+        ssh-public-key-laptop = {
+          path = "/home/felix/.ssh/id_ed25519.pub";
+          owner = config.users.users.felix.name;
+        };
+      };
+
       home-manager.users.felix.imports = [ hm.felix ];
     };
 
