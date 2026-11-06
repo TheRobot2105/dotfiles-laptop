@@ -1,5 +1,5 @@
 {
-  description = "My first flake!";
+  description = "NixOS-Konfiguration (Dendritic Pattern)";
 
   nixConfig = {
     extra-substituters = [
@@ -15,6 +15,13 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    import-tree.url = "github:vic/import-tree";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -84,70 +91,6 @@
 
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nixpkgs-stable,
-      disko,
-      home-manager,
-      plasma-manager,
-      nix-vscode-extensions,
-      nix4vscode,
-      nur,
-      nix-index-database,
-      lanzaboote,
-      nix-flatpak,
-      juliaup-nix,
-      omnibin,
-      ...
-    }@inputs:
-    let
-
-    in
-    {
-      nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
-        modules = [
-          {
-            nixpkgs.overlays = [
-              inputs.nix-vscode-extensions.overlays.default
-              nix4vscode.overlays.default
-              (final: _prev: {
-                stablepkgs = import nixpkgs-stable {
-                  stdenv.hostPlatform.system = final.stdenv.hostPlatform.system;
-                  config.allowUnfree = true;
-                };
-              })
-              (final: prev: {
-                buildGo125Module = prev.buildGoModule;
-              })
-            ];
-          }
-          ./configuration.nix
-
-          lanzaboote.nixosModules.lanzaboote
-
-          nix-index-database.nixosModules.default
-
-          nur.modules.nixos.default
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              useGlobalPkgs = true; # makes hm use nixos's pkgs value
-              extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
-              users.felix.imports = [ ./home.nix ];
-              sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-            };
-          }
-          disko.nixosModules.disko
-          inputs.nixos-facter-modules.nixosModules.facter
-          { config.facter.reportPath = ./facter.json; }
-          nix-flatpak.nixosModules.nix-flatpak
-        ];
-      };
-    };
+  # Dendritic Pattern: Jede Datei unter ./modules ist ein flake-parts-Modul.
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }

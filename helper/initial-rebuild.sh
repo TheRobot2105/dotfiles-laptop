@@ -5,8 +5,8 @@ ssh_private=/etc/ssh/ssh_host_ed25519_key
 ssh_public=/etc/ssh/ssh_host_ed25519_key.pub
 dotfiles_dir=/home/felix/.dotfiles
 if [ -f "$ssh_private" ] && [ -f "$ssh_public" ] && [ -d "$dotfiles_dir" ]; then
-	sudo nix run --option experimental-features "nix-command flakes" nixpkgs#nixos-facter -- -o facter.json
-	sudo chown felix:users facter.json
+	sudo nix run --option experimental-features "nix-command flakes" nixpkgs#nixos-facter -- -o modules/hosts/nixos-laptop/facter.json
+	sudo chown felix:users modules/hosts/nixos-laptop/facter.json
 	sudo nixos-rebuild switch --flake .#nixos-laptop
 	nix-store --optimise -vv
 	nh clean all
