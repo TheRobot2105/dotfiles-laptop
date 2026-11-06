@@ -12,6 +12,7 @@ jobs:
         machine:
           # hostname of your nixosSystem's
           - nixos-laptop
+          - nixos-desktop
         os:
           - ubuntu-latest
           # add others as you need

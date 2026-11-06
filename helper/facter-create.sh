@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-sudo nix run --option experimental-features "nix-command flakes" nixpkgs#nixos-facter -- -o modules/hosts/nixos-laptop/facter.json
-sudo chown felix:users modules/hosts/nixos-laptop/facter.json
+host=${1:-$(hostname)} # Hostname der Konfiguration, z.B. nixos-desktop
+sudo nix run --option experimental-features "nix-command flakes" nixpkgs#nixos-facter -- -o modules/hosts/$host/facter.json
+sudo chown felix:users modules/hosts/$host/facter.json

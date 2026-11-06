@@ -10,6 +10,7 @@
       boot
       sops
       networking
+      laptop
       locale
       plasma
       audio
