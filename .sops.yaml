@@ -1,9 +1,9 @@
 keys:
-  - &host age12628r9239kyyp6pj5ettt2jkcvl5fm7zla4scxh9skv4plldkacq2745gw
+  - &host-laptop age12628r9239kyyp6pj5ettt2jkcvl5fm7zla4scxh9skv4plldkacq2745gw
   - &user age1r3uyv4ecwqjkrajuyv37veuatwcjm92jpt4jtlxytcd3wz7xr9pqrjryq2
 creation_rules:
   - path_regex: secrets/.*[.]yaml
     key_groups:
     - age:
       - *user
-      - *host
+      - *host-laptop
