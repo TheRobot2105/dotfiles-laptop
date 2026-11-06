@@ -1,7 +1,7 @@
 # Host-Definition: Setzt den Laptop aus den einzelnen Feature-Modulen zusammen.
 { config, inputs, ... }:
 {
-  configurations.nixos.nixos-laptop.module = {
+  configurations.nixos.nixos-laptop.module = { ... }: {
     imports = with config.flake.modules.nixos; [
       nixos-laptop
 
@@ -30,7 +30,7 @@
     ];
   };
 
-  flake.modules.nixos.nixos-laptop = {
+  flake.modules.nixos.nixos-laptop = { ... }: {
     imports = [
       inputs.disko.nixosModules.disko
       inputs.nixos-facter-modules.nixosModules.facter

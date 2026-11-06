@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.nixpkgs = {
+  flake.modules.nixos.nixpkgs = { ... }: {
     nixpkgs = {
       config = {
         allowUnfree = true;

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.virtualisation = {
+  flake.modules.nixos.virtualisation = { ... }: {
     programs.virt-manager.enable = true;
     users.groups.libvirtd.members = [ "felix" ];
     users.users.felix.extraGroups = [ "docker" ];

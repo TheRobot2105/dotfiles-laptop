@@ -42,7 +42,7 @@ in
       };
     };
 
-  flake.modules.homeManager.laptop = {
+  flake.modules.homeManager.laptop = { ... }: {
     programs.plasma.input.touchpads = [
       {
         name = "ALP0019:00 044E:121C Touchpad";

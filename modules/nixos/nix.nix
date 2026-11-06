@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.nix = {
+  flake.modules.nixos.nix = { ... }: {
     imports = [ inputs.nix-index-database.nixosModules.default ];
 
     nix = {

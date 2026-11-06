@@ -7,6 +7,9 @@
 
   systems = [ "x86_64-linux" ];
 
+  # Macht die flake-parts-Optionen für nixd sichtbar (Output `debug`).
+  debug = true;
+
   perSystem =
     { pkgs, ... }:
     {

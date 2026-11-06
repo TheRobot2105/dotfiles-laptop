@@ -1,6 +1,6 @@
 # Nicht aktiv; bei Bedarf im Host unter `imports` ergänzen.
 {
-  flake.modules.nixos.plasma-fix = {
+  flake.modules.nixos.plasma-fix = { ... }: {
     nixpkgs.overlays = [
       (final: prev: {
         kdePackages = prev.kdePackages.overrideScope (

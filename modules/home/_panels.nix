@@ -1,6 +1,6 @@
 # Nicht eingebunden (Entwurf).
 {
-  flake.modules.homeManager.panels = {
+  flake.modules.homeManager.panels = { ... }: {
     programs.plasma = {
       panels = {
         taskbar = {

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.nixos-desktop = {
+  flake.modules.nixos.nixos-desktop = { ... }: {
     disko.devices = {
       disk = {
         root = {

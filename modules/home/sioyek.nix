@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.sioyek = {
+  flake.modules.homeManager.sioyek = { ... }: {
     programs.sioyek = {
       enable = true;
       config = {

@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.plasma = {
+  flake.modules.homeManager.plasma = { ... }: {
 
     programs.plasma = {
       panels = [

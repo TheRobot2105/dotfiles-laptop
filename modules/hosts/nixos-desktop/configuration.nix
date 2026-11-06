@@ -6,7 +6,7 @@
   ...
 }:
 {
-  configurations.nixos.nixos-desktop.module = {
+  configurations.nixos.nixos-desktop.module = { ... }: {
     imports = with config.flake.modules.nixos; [
       nixos-desktop
 
@@ -34,7 +34,7 @@
     ];
   };
 
-  flake.modules.nixos.nixos-desktop = {
+  flake.modules.nixos.nixos-desktop = { ... }: {
     imports = [
       inputs.disko.nixosModules.disko
       inputs.nixos-facter-modules.nixosModules.facter

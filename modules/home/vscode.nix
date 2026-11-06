@@ -73,11 +73,15 @@
             "nix.serverSettings" = {
               nixd = {
                 formatting = {
-                  command = [
-                    "nix fmt"
-                  ];
+                  # nixd übergibt den Inhalt per stdin – "nix fmt" kann das nicht.
+                  command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
                 };
                 options = {
+                  # Optionen auf oberster Ebene der Dendritic-Dateien
+                  # (flake.modules.*, perSystem, configurations, …); braucht `debug = true;`.
+                  flake_parts = {
+                    expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").debug.options";
+                  };
                   home_manager = {
                     expr = "(builtins.getFlake \"/home/felix/.dotfiles/\").nixosConfigurations.nixos-laptop.options.home-manager.users.type.getSubOptions []";
                   };

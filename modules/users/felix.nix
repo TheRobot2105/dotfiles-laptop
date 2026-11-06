@@ -22,7 +22,7 @@ in
       home-manager.users.felix.imports = [ hm.felix ];
     };
 
-  flake.modules.homeManager.felix = {
+  flake.modules.homeManager.felix = { ... }: {
     imports = with hm; [
       packages
       shell
