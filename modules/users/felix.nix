@@ -19,8 +19,12 @@ in
         ];
       };
 
-      # SSH-Schlüssel von felix (Name in secrets.yaml: ssh-*-key-laptop)
+      # Schlüssel von felix: age (für sops als Benutzer) und SSH
       sops.secrets = {
+        age-key = {
+          path = "/home/felix/.config/sops/age/keys.txt";
+          owner = config.users.users.felix.name;
+        };
         ssh-private-key-laptop = {
           path = "/home/felix/.ssh/id_ed25519";
           owner = config.users.users.felix.name;

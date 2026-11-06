@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.modules.nixos.sops =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     {
       imports = [ inputs.sops-nix.nixosModules.sops ];
 
@@ -18,10 +18,6 @@
         secrets = {
           password = {
             neededForUsers = true;
-          };
-          age-key = {
-            path = "/home/felix/.config/sops/age/keys.txt";
-            owner = config.users.users.felix.name;
           };
           syncthing-cert = { };
           syncthing-key = { };
