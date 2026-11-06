@@ -20,6 +20,7 @@
       audio
       printing
       fonts
+      stylix
       packages
       apps
       nix-ld

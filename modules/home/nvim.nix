@@ -25,18 +25,10 @@
 
         plugins = with pkgs.vimPlugins; [
           {
-            plugin = catppuccin-nvim;
-            type = "lua";
-            config = ''
-              require("catppuccin").setup({ flavour = "mocha" })
-              vim.cmd.colorscheme("catppuccin")
-            '';
-          }
-          {
             plugin = lualine-nvim;
             type = "lua";
             config = ''
-              require("lualine").setup({ options = { theme = "catppuccin" } })
+              require("lualine").setup({ options = { theme = "auto" } })
             '';
           }
           nvim-web-devicons

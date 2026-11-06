@@ -94,12 +94,10 @@
             "security.workspace.trust.untrustedFiles" = "open";
             "ungit.showButton" = true;
             "ungit.showInActiveColumn" = true;
-            "workbench.colorTheme" = "Winter is Coming (Dark Blue)";
             "workbench.iconTheme" = "material-icon-theme";
             "workbench.startupEditor" = "none";
             "latex-workshop.latex.autoBuild.run" = "never";
             "terminal.integrated.defaultProfile.linux" = "fish";
-            "editor.fontFamily" = "Fira Code";
             "editor.fontLigatures" = true;
 
             "tinymist.exportPdf" = "onSave";

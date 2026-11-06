@@ -91,7 +91,6 @@
           path = [ "${inputs.wallpaper}/wallpaper" ];
           interval = 600;
         };
-        lookAndFeel = "org.kde.breezedark.desktop";
       };
       session = {
         general.askForConfirmationOnLogout = false;

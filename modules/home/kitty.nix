@@ -2,9 +2,7 @@
   flake.modules.homeManager.kitty = { ... }: {
     programs.kitty = {
       enable = true;
-      font.name = ''family="Fira Code"'';
       shellIntegration.enableFishIntegration = true;
-      themeFile = "Catppuccin-Mocha";
       settings = {
         scrollback_lines = 10000;
         shell = "fish";
