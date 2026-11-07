@@ -27,6 +27,7 @@
       tailscale
       flatpak
       home-manager
+      helium
       felix
     ];
   };
