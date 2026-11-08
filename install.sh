@@ -50,7 +50,17 @@ luks_file=/tmp/luks-password # muss zu passwordFile in modules/hosts/*/disko.nix
 tmp=$(mktemp -d)
 chmod 700 "$tmp"
 
+ssh_begin="# >>> install.sh (temporär)"
+ssh_end="# <<< install.sh"
+remove_ssh_block() {
+	local range="/^$ssh_begin\$/,/^$ssh_end\$/d"
+	[ -f ~/.ssh/config ] && sed -i "$range" ~/.ssh/config
+	sudo test -f /root/.ssh/config && sudo sed -i "$range" /root/.ssh/config
+	return 0
+}
+
 cleanup() {
+	remove_ssh_block 2>/dev/null || true
 	find "$tmp" -type f -exec shred -u {} + 2>/dev/null || true
 	rm -rf "$tmp"
 	[ -f "$luks_file" ] && shred -u "$luks_file"
@@ -90,16 +100,22 @@ SOPS_AGE_KEY=$(ssh-to-age -private-key -i "$host_key") \
 chmod 600 "$user_key"
 # Gilt für alle ssh-Aufrufe von git/nix in dieser Live-Sitzung – für den
 # Benutzer (Auswertung) und für root (Build in /mnt).
-ssh_conf="Host github.com
+# Der Block steht zwischen Markern, damit ein erneuter Lauf ihn ersetzt
+# statt einen zweiten anzuhängen; cleanup entfernt ihn wieder.
+ssh_conf="$ssh_begin
+Host github.com
   IdentityFile $user_key
   IdentitiesOnly yes
-  StrictHostKeyChecking accept-new"
+  StrictHostKeyChecking accept-new
+$ssh_end"
 install -d -m700 ~/.ssh
-printf '%s\n' "$ssh_conf" >>~/.ssh/config
 sudo install -d -m700 /root/.ssh
+remove_ssh_block
+printf '%s\n' "$ssh_conf" >>~/.ssh/config
 printf '%s\n' "$ssh_conf" | sudo tee -a /root/.ssh/config >/dev/null
 # root wertet das Repo des Live-Benutzers aus.
-sudo git config --global --add safe.directory "$repo"
+sudo git config --global --get-all safe.directory 2>/dev/null | grep -qxF "$repo" ||
+	sudo git config --global --add safe.directory "$repo"
 
 # --- 3. Hardware erfassen ------------------------------------------------------
 step "Hardware mit nixos-facter erfassen"
