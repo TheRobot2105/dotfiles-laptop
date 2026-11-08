@@ -62,7 +62,11 @@ step() { printf '\n\033[1;34m==> %s\033[0m\n' "$*"; }
 
 # --- 1. Host-Key aus Bitwarden ------------------------------------------------
 step "Host-Key aus Bitwarden holen (Eintrag: $BW_ITEM)"
-[ -n "${BW_SERVER:-}" ] && bw config server "$BW_SERVER" >/dev/null
+# Server nur ändern, wenn nötig – bw erlaubt das nur im ausgeloggten Zustand.
+if [ -n "${BW_SERVER:-}" ] && [ "$(bw config server)" != "${BW_SERVER%/}" ]; then
+	bw logout >/dev/null 2>&1 || true
+	bw config server "${BW_SERVER%/}" >/dev/null
+fi
 case "$(bw status | jq -r .status)" in
 unauthenticated) BW_SESSION=$(bw login --raw) ;;
 *) BW_SESSION=$(bw unlock --raw) ;;
