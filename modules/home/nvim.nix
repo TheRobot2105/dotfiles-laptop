@@ -8,6 +8,8 @@
         viAlias = true;
         vimAlias = true;
         vimdiffAlias = true;
+        withPython3 = false;
+        withRuby = false;
 
         # Language servers & tools available inside nvim
         extraPackages = with pkgs; [
