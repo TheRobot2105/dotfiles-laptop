@@ -18,7 +18,7 @@ set -euo pipefail
 export NIX_CONFIG="experimental-features = nix-command flakes"
 if [ -z "${INSTALL_SH_IN_SHELL:-}" ]; then
 	export INSTALL_SH_IN_SHELL=1
-	exec nix shell nixpkgs#{bitwarden-cli,sops,ssh-to-age,jq,nixos-facter,git} --command "$0" "$@"
+	exec nix shell nixpkgs#{bitwarden-cli,sops,ssh-to-age,jq,nixos-facter,git,nix-output-monitor} --command "$0" "$@"
 fi
 
 host=""
@@ -180,6 +180,9 @@ step "System auswerten"
 drv=$("${nix_mnt[@]}" eval --raw "$flake.system.build.toplevel.drvPath")
 
 step "System direkt in den Store auf der neuen Platte bauen (/mnt/nix/store)"
+# nom zeigt dieselbe Fortschrittsanzeige wie nh; pipefail bricht bei Fehlern ab.
+"${nix_mnt[@]}" build --no-link --log-format internal-json -v "$drv^*" |& nom --json
+# nom schluckt die normale Ausgabe – Pfad holen (baut nichts neu).
 system=$("${nix_mnt[@]}" build --no-link --print-out-paths "$drv^*")
 
 step "NixOS installieren"
