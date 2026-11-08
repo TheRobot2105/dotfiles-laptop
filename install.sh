@@ -160,14 +160,27 @@ read -rp "ALLE Daten auf $disks werden gelöscht. Fortfahren? (yes/no): " ready
 step "Platte partitionieren und nach /mnt einhängen"
 sudo "$disko/bin/disko-destroy-format-mount" --yes-wipe-all-disks # bestätigt wurde oben
 
+# disko legt die Swap-Datei an, aktiviert sie aber nicht. Ohne Swap reicht
+# der RAM des Live-ISOs (Store im RAM) beim großen Build nicht.
+step "Swap auf der neuen Platte aktivieren"
+for dev in $(nix eval --json "$flake.swapDevices" --apply 'map (s: s.device)' | jq -r '.[]'); do
+	sudo swapon "/mnt$dev" || echo "Konnte /mnt$dev nicht aktivieren, weiter ohne." >&2
+done
+swapon --show
+
 # --- 6. Host-Key ins neue System, dann installieren ----------------------------
 step "Host-Key nach /mnt/etc/ssh kopieren"
 sudo install -D -m600 -o root -g root "$host_key" /mnt/etc/ssh/ssh_host_ed25519_key
 sudo install -D -m644 -o root -g root "$host_key.pub" /mnt/etc/ssh/ssh_host_ed25519_key.pub
 
+# Auswerten und Bauen getrennt: Der Speicher der Auswertung (mehrere GB) wird
+# erst frei, wenn der Prozess endet – der Build läuft dann in einem frischen.
+nix_mnt=(sudo --preserve-env=NIX_CONFIG nix --accept-flake-config --store /mnt)
+step "System auswerten"
+drv=$("${nix_mnt[@]}" eval --raw "$flake.system.build.toplevel.drvPath")
+
 step "System direkt in den Store auf der neuen Platte bauen (/mnt/nix/store)"
-system=$(sudo --preserve-env=NIX_CONFIG nix build --store /mnt --accept-flake-config \
-	--no-link --print-out-paths "$flake.system.build.toplevel")
+system=$("${nix_mnt[@]}" build --no-link --print-out-paths "$drv^*")
 
 step "NixOS installieren"
 sudo nixos-install --root /mnt --system "$system" --no-root-passwd --no-channel-copy
