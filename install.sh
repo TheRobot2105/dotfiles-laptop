@@ -1,0 +1,154 @@
+#!/usr/bin/env bash
+# Neuinstallation in einem Schritt aus dem NixOS-Live-ISO, direkt von main.
+#
+#   git clone https://github.com/TheRobot2105/dotfiles-laptop.git ~/.dotfiles
+#   cd ~/.dotfiles && ./install.sh nixos-laptop [--dry-run]
+#
+# Ablauf: Host-Key aus Bitwarden holen → damit den User-SSH-Key aus sops
+# entschlüsseln (für den privaten wallpaper-Input) → facter → als Benutzer
+# bauen → disko (LÖSCHT DIE PLATTE) → Host-Key nach /mnt/etc/ssh →
+# nixos-install. sops-nix entschlüsselt dann schon bei der Installation.
+#
+# Umgebungsvariablen:
+#   BW_ITEM    Name des Bitwarden-Eintrags mit dem Host-Key (Standard: ssh-host-key)
+#   BW_SERVER  optional, z.B. https://vault.bitwarden.eu
+set -euo pipefail
+
+# Benötigte Werkzeuge aus nixpkgs holen und das Skript darin neu starten.
+export NIX_CONFIG="experimental-features = nix-command flakes"
+if [ -z "${INSTALL_SH_IN_SHELL:-}" ]; then
+	export INSTALL_SH_IN_SHELL=1
+	exec nix shell nixpkgs#{bitwarden-cli,sops,ssh-to-age,jq,nixos-facter,git} --command "$0" "$@"
+fi
+
+host=""
+dry_run=false
+for arg in "$@"; do
+	case "$arg" in
+	--dry-run) dry_run=true ;;
+	-*)
+		echo "Unbekannte Option: $arg" >&2
+		exit 1
+		;;
+	*) host=$arg ;;
+	esac
+done
+
+repo=$(git rev-parse --show-toplevel)
+cd "$repo"
+
+hosts=$(nix eval --json .#nixosConfigurations --apply builtins.attrNames | jq -r '.[]')
+if [ -z "$host" ] || ! grep -qx "$host" <<<"$hosts"; then
+	echo "Benutzung: $0 <host> [--dry-run]" >&2
+	# shellcheck disable=SC2086 # Liste absichtlich aufteilen
+	echo "Verfügbare Hosts:" $hosts >&2
+	exit 1
+fi
+
+BW_ITEM=${BW_ITEM:-ssh-host-key}
+luks_file=/tmp/luks-password # muss zu passwordFile in modules/hosts/*/disko.nix passen
+tmp=$(mktemp -d)
+chmod 700 "$tmp"
+
+cleanup() {
+	find "$tmp" -type f -exec shred -u {} + 2>/dev/null || true
+	rm -rf "$tmp"
+	[ -f "$luks_file" ] && shred -u "$luks_file"
+	bw lock >/dev/null 2>&1 || true
+}
+trap cleanup EXIT
+
+step() { printf '\n\033[1;34m==> %s\033[0m\n' "$*"; }
+
+# --- 1. Host-Key aus Bitwarden ------------------------------------------------
+step "Host-Key aus Bitwarden holen (Eintrag: $BW_ITEM)"
+[ -n "${BW_SERVER:-}" ] && bw config server "$BW_SERVER" >/dev/null
+case "$(bw status | jq -r .status)" in
+unauthenticated) BW_SESSION=$(bw login --raw) ;;
+*) BW_SESSION=$(bw unlock --raw) ;;
+esac
+export BW_SESSION
+bw sync >/dev/null
+
+host_key=$tmp/ssh_host_ed25519_key
+bw get item "$BW_ITEM" | jq -r '.sshKey.privateKey // .notes // empty' >"$host_key"
+chmod 600 "$host_key"
+if ! ssh-keygen -y -f "$host_key" >"$host_key.pub" 2>/dev/null; then
+	echo "Eintrag '$BW_ITEM' enthält keinen gültigen privaten SSH-Key." >&2
+	exit 1
+fi
+
+# --- 2. User-SSH-Key für GitHub (privater wallpaper-Input) --------------------
+step "User-SSH-Key aus secrets/secrets.yaml entschlüsseln"
+user_key=$tmp/id_ed25519
+SOPS_AGE_KEY=$(ssh-to-age -private-key -i "$host_key") \
+	sops -d --extract '["ssh-private-key-laptop"]' secrets/secrets.yaml >"$user_key"
+chmod 600 "$user_key"
+# Gilt für alle ssh-Aufrufe von git/nix in dieser Live-Sitzung.
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+cat >>~/.ssh/config <<EOF
+Host github.com
+  IdentityFile $user_key
+  IdentitiesOnly yes
+  StrictHostKeyChecking accept-new
+EOF
+
+# --- 3. Hardware erfassen ------------------------------------------------------
+step "Hardware mit nixos-facter erfassen"
+facter=modules/hosts/$host/facter.json
+sudo "$(command -v nixos-facter)" -o "$facter"
+sudo chown "$(id -u):$(id -g)" "$facter"
+git add "$facter" # der flake sieht nur Dateien, die git kennt
+
+# --- 4. Als Benutzer bauen -----------------------------------------------------
+step "disko-Skript und System bauen ($host)"
+nix build --accept-flake-config -o "$tmp/disko" ".#nixosConfigurations.$host.config.system.build.destroyFormatMount"
+nix build --accept-flake-config -o "$tmp/system" ".#nixosConfigurations.$host.config.system.build.toplevel"
+
+if $dry_run; then
+	step "Dry-Run: alles gebaut, es wurde nichts verändert."
+	exit 0
+fi
+
+# --- 5. LUKS-Passwort und Partitionierung --------------------------------------
+disks=$(nix eval --raw ".#nixosConfigurations.$host.config.disko.devices.disk" \
+	--apply 'd: builtins.concatStringsSep " " (map (x: x.device) (builtins.attrValues d))')
+
+step "LUKS-Passwort festlegen"
+while true; do
+	read -rsp "Passwort für LUKS: " pw1 && echo
+	read -rsp "Wiederholen: " pw2 && echo
+	[ -n "$pw1" ] && [ "$pw1" = "$pw2" ] && break
+	echo "Passwörter leer oder ungleich, nochmal."
+done
+(umask 077 && printf '%s' "$pw1" >"$luks_file")
+unset pw1 pw2
+
+# shellcheck disable=SC2086 # mehrere Platten möglich
+lsblk -o NAME,SIZE,MODEL $disks
+read -rp "ALLE Daten auf $disks werden gelöscht. Fortfahren? (yes/no): " ready
+[ "$ready" = "yes" ] || exit 1
+
+step "Platte partitionieren und nach /mnt einhängen"
+sudo "$tmp/disko" --yes-wipe-all-disks # bestätigt wurde oben
+
+# --- 6. Host-Key ins neue System, dann installieren ----------------------------
+step "Host-Key nach /mnt/etc/ssh kopieren"
+sudo install -D -m600 -o root -g root "$host_key" /mnt/etc/ssh/ssh_host_ed25519_key
+sudo install -D -m644 -o root -g root "$host_key.pub" /mnt/etc/ssh/ssh_host_ed25519_key.pub
+
+step "NixOS installieren"
+sudo nixos-install --root /mnt --system "$(readlink -f "$tmp/system")" --no-root-passwd --no-channel-copy
+
+# --- 7. Repo ins neue System übernehmen ---------------------------------------
+step "Dotfiles nach /mnt/home/felix/.dotfiles kopieren"
+sudo mkdir -p /mnt/home/felix
+sudo cp -a "$repo" /mnt/home/felix/.dotfiles
+sudo nixos-enter --root /mnt -c 'chown -R felix:users /home/felix/.dotfiles'
+# Nach dem Reboot liegt der User-SSH-Key aus sops bereit → Remote auf SSH.
+remote=$(git remote get-url origin)
+ssh_remote=$(sed -E 's#\.git$##; s#^https://github.com/#git@github.com:#; s#$#.git#' <<<"$remote")
+sudo git -C /mnt/home/felix/.dotfiles remote set-url origin "$ssh_remote"
+
+step "Fertig. Nach dem Reboot: $facter committen und pushen."
