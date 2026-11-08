@@ -6,8 +6,8 @@
 #
 # Ablauf: Host-Key aus Bitwarden holen → damit den User-SSH-Key aus sops
 # entschlüsseln (für den privaten wallpaper-Input) → facter → als Benutzer
-# bauen → disko (LÖSCHT DIE PLATTE) → Host-Key nach /mnt/etc/ssh →
-# nixos-install. sops-nix entschlüsselt dann schon bei der Installation.
+# disko (LÖSCHT DIE PLATTE) → Host-Key nach /mnt/etc/ssh → System direkt
+# nach /mnt bauen (nicht in den RAM des Live-ISOs) → nixos-install. sops-nix entschlüsselt dann schon bei der Installation.
 #
 # Umgebungsvariablen:
 #   BW_ITEM    Name des Bitwarden-Eintrags mit dem Host-Key (Standard: ssh-host-key)
@@ -84,15 +84,18 @@ user_key=$tmp/id_ed25519
 SOPS_AGE_KEY=$(ssh-to-age -private-key -i "$host_key") \
 	sops -d --extract '["ssh-private-key-laptop"]' secrets/secrets.yaml >"$user_key"
 chmod 600 "$user_key"
-# Gilt für alle ssh-Aufrufe von git/nix in dieser Live-Sitzung.
-mkdir -p ~/.ssh
-chmod 700 ~/.ssh
-cat >>~/.ssh/config <<EOF
-Host github.com
+# Gilt für alle ssh-Aufrufe von git/nix in dieser Live-Sitzung – für den
+# Benutzer (Auswertung) und für root (Build in /mnt).
+ssh_conf="Host github.com
   IdentityFile $user_key
   IdentitiesOnly yes
-  StrictHostKeyChecking accept-new
-EOF
+  StrictHostKeyChecking accept-new"
+install -d -m700 ~/.ssh
+printf '%s\n' "$ssh_conf" >>~/.ssh/config
+sudo install -d -m700 /root/.ssh
+printf '%s\n' "$ssh_conf" | sudo tee -a /root/.ssh/config >/dev/null
+# root wertet das Repo des Live-Benutzers aus.
+sudo git config --global --add safe.directory "$repo"
 
 # --- 3. Hardware erfassen ------------------------------------------------------
 step "Hardware mit nixos-facter erfassen"
@@ -101,18 +104,22 @@ sudo "$(command -v nixos-facter)" -o "$facter"
 sudo chown "$(id -u):$(id -g)" "$facter"
 git add "$facter" # der flake sieht nur Dateien, die git kennt
 
-# --- 4. Als Benutzer bauen -----------------------------------------------------
-step "disko-Skript und System bauen ($host)"
-nix build --accept-flake-config -o "$tmp/disko" ".#nixosConfigurations.$host.config.system.build.destroyFormatMount"
-nix build --accept-flake-config -o "$tmp/system" ".#nixosConfigurations.$host.config.system.build.toplevel"
+# --- 4. disko-Skript bauen -----------------------------------------------------
+# Im Live-ISO liegt /nix/store im RAM. Hier wird nur das kleine disko-Skript
+# gebaut, das eigentliche System erst nach dem Partitionieren direkt in /mnt.
+flake=".#nixosConfigurations.$host.config"
+step "disko-Skript bauen ($host)"
+disko=$(nix build --accept-flake-config --no-link --print-out-paths "$flake.system.build.destroyFormatMount")
 
 if $dry_run; then
-	step "Dry-Run: alles gebaut, es wurde nichts verändert."
+	step "Dry-Run: System auswerten und anzeigen, was geladen würde"
+	nix build --accept-flake-config --dry-run "$flake.system.build.toplevel"
+	step "Dry-Run: Auswertung ok, es wurde nichts verändert."
 	exit 0
 fi
 
 # --- 5. LUKS-Passwort und Partitionierung --------------------------------------
-disks=$(nix eval --raw ".#nixosConfigurations.$host.config.disko.devices.disk" \
+disks=$(nix eval --raw "$flake.disko.devices.disk" \
 	--apply 'd: builtins.concatStringsSep " " (map (x: x.device) (builtins.attrValues d))')
 
 step "LUKS-Passwort festlegen"
@@ -131,15 +138,19 @@ read -rp "ALLE Daten auf $disks werden gelöscht. Fortfahren? (yes/no): " ready
 [ "$ready" = "yes" ] || exit 1
 
 step "Platte partitionieren und nach /mnt einhängen"
-sudo "$tmp/disko" --yes-wipe-all-disks # bestätigt wurde oben
+sudo "$disko" --yes-wipe-all-disks # bestätigt wurde oben
 
 # --- 6. Host-Key ins neue System, dann installieren ----------------------------
 step "Host-Key nach /mnt/etc/ssh kopieren"
 sudo install -D -m600 -o root -g root "$host_key" /mnt/etc/ssh/ssh_host_ed25519_key
 sudo install -D -m644 -o root -g root "$host_key.pub" /mnt/etc/ssh/ssh_host_ed25519_key.pub
 
+step "System direkt in den Store auf der neuen Platte bauen (/mnt/nix/store)"
+system=$(sudo --preserve-env=NIX_CONFIG nix build --store /mnt --accept-flake-config \
+	--no-link --print-out-paths "$flake.system.build.toplevel")
+
 step "NixOS installieren"
-sudo nixos-install --root /mnt --system "$(readlink -f "$tmp/system")" --no-root-passwd --no-channel-copy
+sudo nixos-install --root /mnt --system "$system" --no-root-passwd --no-channel-copy
 
 # --- 7. Repo ins neue System übernehmen ---------------------------------------
 step "Dotfiles nach /mnt/home/felix/.dotfiles kopieren"
