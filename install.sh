@@ -142,7 +142,7 @@ read -rp "ALLE Daten auf $disks werden gelöscht. Fortfahren? (yes/no): " ready
 [ "$ready" = "yes" ] || exit 1
 
 step "Platte partitionieren und nach /mnt einhängen"
-sudo "$disko" --yes-wipe-all-disks # bestätigt wurde oben
+sudo "$disko/bin/disko-destroy-format-mount" --yes-wipe-all-disks # bestätigt wurde oben
 
 # --- 6. Host-Key ins neue System, dann installieren ----------------------------
 step "Host-Key nach /mnt/etc/ssh kopieren"
