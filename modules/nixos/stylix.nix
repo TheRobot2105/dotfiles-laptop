@@ -25,8 +25,9 @@
 
         fonts = {
           monospace = {
-            package = pkgs.fira-code;
-            name = "Fira Code";
+            # Nerd-Font-Variante: enthält die Icons für lualine, gitsigns & Co.
+            package = pkgs.nerd-fonts.fira-code;
+            name = "FiraCode Nerd Font Mono";
           };
           sansSerif = {
             package = pkgs.liberation_ttf;
