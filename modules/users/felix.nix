@@ -35,6 +35,23 @@ in
         };
       };
 
+      # sops-nix legt fehlende Elternordner der Secrets (~/.config/sops/age,
+      # ~/.ssh) als root an. Bei einer Neuinstallation gehört ~/.config dann
+      # root und home-manager scheitert mit "Permission denied".
+      system.activationScripts.felixSecretDirs = {
+        deps = [ "setupSecrets" ];
+        text =
+          let
+            home = config.users.users.felix.home;
+          in
+          ''
+            for d in ${home}/.config ${home}/.config/sops ${home}/.config/sops/age ${home}/.ssh; do
+              if [ -d "$d" ]; then chown felix:users "$d"; fi
+            done
+            if [ -d ${home}/.ssh ]; then chmod 700 ${home}/.ssh; fi
+          '';
+      };
+
       home-manager.users.felix.imports = [ hm.felix ];
     };
 
