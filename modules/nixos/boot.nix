@@ -24,7 +24,7 @@
         };
         plymouth = {
           enable = true;
-          theme = "deus_ex";
+          #theme = "deus_ex";
           themePackages = with pkgs; [
             # By default we would install all themes
             (adi1090x-plymouth-themes.override {
